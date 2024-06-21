@@ -8,6 +8,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: custom_appbar('teste', 125.0,const Color(0xFF4B7C82)),
+       floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Registrar um novo livro',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
+
+   

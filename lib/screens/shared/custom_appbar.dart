@@ -5,5 +5,8 @@ AppBar custom_appbar(String title, double height,Color background){
   title:Text(title),
   toolbarHeight: height,
   backgroundColor: background,
+  actions: const [
+   SearchBar(),
+   ], 
   );
 }
