@@ -11,18 +11,15 @@ class CustomTabBarItem extends StatelessWidget {
         color: const Color(0xFFCDE7EB),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Container(
+      child:Container(
         height: 32,
-         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-         child:  SizedBox(
-          width: 80,
-          height: 80,
-          child: Image.asset(
-            'assets/images/livros.jpg',
-            fit: BoxFit.contain,
+         padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+         child:  const SizedBox(
+          width: 100,
+          height: 100,
+          child: Icon(Icons.circle),
          ),
-         ),
-      ),
+     ),
      ),
   );
   }

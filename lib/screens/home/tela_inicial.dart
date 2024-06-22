@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
     return  DefaultTabController(
       length: 3, 
       child: Scaffold(
-        appBar: custom_appbar(125.0,const Color(0xFF4B7C82)),
+        appBar: custom_appbar(100.0,const Color(0xFF4B7C82)),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Adicionar um novo livro',
