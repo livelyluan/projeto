@@ -1,4 +1,4 @@
-import 'package:book_finder/screens/home/home.dart';
+import 'package:book_finder/screens/home/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
      home: Home(),
+     debugShowCheckedModeBanner: false,
     );
   }
 }
