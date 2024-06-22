@@ -15,10 +15,10 @@ class CustomTabBarItem extends StatelessWidget {
         height: 32,
          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
          child:  SizedBox(
-          width: 12,
-          height: 12,
-          child: Image.network(
-            'assets/vectors/icon_2066_x2.svg',
+          width: 80,
+          height: 80,
+          child: Image.asset(
+            'assets/images/livros.jpg',
             fit: BoxFit.contain,
          ),
          ),
