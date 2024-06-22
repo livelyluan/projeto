@@ -7,7 +7,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_appbar('teste', 125.0,const Color(0xFF4B7C82)),
+      appBar: custom_appbar('teste', 145.0,const Color(0xFF4B7C82)),
        floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Registrar um novo livro',
