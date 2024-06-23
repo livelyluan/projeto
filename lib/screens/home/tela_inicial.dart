@@ -10,12 +10,30 @@ class Home extends StatelessWidget {
       length: 3, 
       child: Scaffold(
         appBar: custom_appbar(100.0,const Color(0xFF4B7C82)),
+        body: TabBarView( 
+        children: [
+        Container(
+          child: const Center(
+            child: Text('primeira aba'),
+            ),
+        ),
+        Container(
+          child: const Center(
+            child: Text('segunda aba'),
+            ),
+        ),
+        Container(
+          child: const Center(
+            child: Text('terceira aba'),
+            ),
+        ),
+        ], 
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Adicionar um novo livro',
           child: const Icon(Icons.add),
           ),
-
       ) 
       );
   }

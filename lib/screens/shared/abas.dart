@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomTabBarItem extends StatelessWidget {
 
@@ -13,11 +14,11 @@ class CustomTabBarItem extends StatelessWidget {
       ),
       child:Container(
         height: 32,
-         padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+         padding: const EdgeInsets.fromLTRB(0, 7, 0, 10),
          child:  const SizedBox(
           width: 100,
           height: 100,
-          child: Icon(Icons.circle),
+          child: Icon(Icons.circle, size: 18, color: Colors.black),
          ),
      ),
      ),
