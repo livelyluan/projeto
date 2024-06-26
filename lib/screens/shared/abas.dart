@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 class CustomTabBarItem extends StatelessWidget {
+ const CustomTabBarItem({super.key});
 
   @override
   Widget build(BuildContext context) {
