@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 class CustomTabBarItem extends StatelessWidget {
- const CustomTabBarItem({super.key});
+  final IconData icon;
+  final String text;
+ const CustomTabBarItem({super.key,required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +14,15 @@ class CustomTabBarItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child:Container(
-        height: 32,
+        height: 52,
+        width: 123,
          padding: const EdgeInsets.fromLTRB(0, 7, 0, 10),
-         child:  const SizedBox(
-          width: 100,
-          height: 100,
-          child: Icon(Icons.circle, size: 18, color: Colors.black),
+         child:   Column(
+          children: [
+          Icon(icon, size: 15, color: Colors.black),
+         const SizedBox(width: 4,),
+          Text(text, style: const TextStyle(fontSize: 14, color: Colors.black),),
+          ],
          ),
      ),
      ),
