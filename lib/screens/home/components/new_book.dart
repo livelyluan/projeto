@@ -17,10 +17,10 @@ class NewBook extends StatelessWidget {
     margin: const EdgeInsets.symmetric(vertical: 2.0),
     child: Row(
       children: [
-        Expanded(
+     const Expanded(
        child: ListTile(
-          title: Text(book.title),
-          subtitle: Text(book.subtitle),
+          title: Text('title', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+          subtitle: Text('subtitle', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
         ),
         ),
         IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),

@@ -15,7 +15,7 @@ class CustomTabBarItem extends StatelessWidget {
       ),
       child:Container(
         height: 52,
-        width: 123,
+        width: 120,
          padding: const EdgeInsets.fromLTRB(0, 7, 0, 10),
          child:   Column(
           children: [
