@@ -23,7 +23,14 @@ class NewBook extends StatelessWidget {
           subtitle: Text('subtitle', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
         ),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+        PopupMenuButton(itemBuilder: (context) =>  [
+        const  PopupMenuItem(
+            child: Text('Editar')
+            ),
+            const  PopupMenuItem(
+            child: Text('Remover')
+            ),
+        ]),
         Image.asset(
        'assets/images/livros.png',
        width: 100,
