@@ -12,7 +12,7 @@ class _NewBookState extends State<NewBook> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewAppBar(const Color(0xFF4B7C82)),
+      appBar: NewAppBar('Cadastrar novo livro',const Color(0xFF4B7C82)),
       floatingActionButton: FloatingActionButton(onPressed: () {},
       tooltip: 'salvar',
       child: const Icon(Icons.save),

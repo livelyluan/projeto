@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
           ),
           body: Expanded(
             child: ListView.builder(
-           itemCount: 4,
+           itemCount: 8,
            itemBuilder: (context, index) => NewBook(book: book,),
             ),
           ),

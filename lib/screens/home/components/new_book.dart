@@ -12,9 +12,9 @@ class NewBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-  padding: const EdgeInsets.symmetric(vertical: 16.0),
+  padding: const EdgeInsets.symmetric(vertical: 6.0),
   child: Card(
-    margin: const EdgeInsets.symmetric(vertical: 8.0),
+    margin: const EdgeInsets.symmetric(vertical: 2.0),
     child: Row(
       children: [
         Expanded(
@@ -23,8 +23,14 @@ class NewBook extends StatelessWidget {
           subtitle: Text(book.subtitle),
         ),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+        Image.asset(
+       'assets/images/livros.png',
+       width: 100,
+       
+        ),
       ],
+      
     ),
   ),
     );

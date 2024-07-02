@@ -25,7 +25,7 @@ AppBar Custom_AppBar(double height,Color background){
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 1.0),
           child: IconButton(
-            icon: const Icon(Icons.settings,color: Colors.white,size: 20,),
+            icon: const Icon(Icons.settings,color: Colors.white,size: 19,),
             tooltip: 'configurações',
             onPressed: () {},
              ),
@@ -44,7 +44,21 @@ AppBar Custom_AppBar(double height,Color background){
         ),
         ),
         IconButton(onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'pesquisar',),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.circle), tooltip: 'em desenvolvimento',),
+        Container(
+          width: 35,
+          height: 35,
+          decoration: const BoxDecoration(
+          color: Color(0xFF006971),
+          shape: BoxShape.circle,
+        ),
+         child: Padding(
+           padding:  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 1.0),
+           child: IconButton(
+            onPressed: () {},
+             icon: const Icon(Icons.person, color: Colors.white,size: 19,),
+              tooltip: 'em desenvolvimento',
+              ),
+         )),
       ],
     ),
   ),
