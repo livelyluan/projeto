@@ -31,7 +31,7 @@ AppBar Custom_AppBar(double height,Color background){
              ),
         ),
        ),
-      const SizedBox(width: 4.0,),
+      const SizedBox(width: 8.0,),
        const Expanded
         (
           child:  TextField(
@@ -44,6 +44,7 @@ AppBar Custom_AppBar(double height,Color background){
         ),
         ),
         IconButton(onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'pesquisar',),
+      const  SizedBox(width: 3,),
         Container(
           width: 35,
           height: 35,
@@ -58,7 +59,8 @@ AppBar Custom_AppBar(double height,Color background){
              icon: const Icon(Icons.person, color: Colors.white,size: 19,),
               tooltip: 'em desenvolvimento',
               ),
-         )),
+         ),
+         ),
       ],
     ),
   ),

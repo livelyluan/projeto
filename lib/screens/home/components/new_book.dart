@@ -34,10 +34,8 @@ class NewBook extends StatelessWidget {
         Image.asset(
        'assets/images/livros.png',
        width: 100,
-       
         ),
       ],
-      
     ),
   ),
     );

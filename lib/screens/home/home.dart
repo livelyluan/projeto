@@ -21,18 +21,26 @@ class Home extends StatelessWidget {
         appBar: Custom_AppBar(100.0,const Color(0xFF4B7C82)),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, 'new_book');
+            Navigator.pushNamed(context, 'register');
           },
           tooltip: 'Adicionar um novo livro',
           child: const Icon(Icons.add),
           ),
-          body: Expanded(
-            child: ListView.builder(
-           itemCount: 8,
-           itemBuilder: (context, index) => NewBook(book: book,),
+          body: TabBarView(
+            children:[ Expanded(
+              child: ListView.builder(
+             itemCount: 8,
+             itemBuilder: (context, index) => NewBook(book: book,),
+              ),
             ),
+             const Center(
+              child: Text('2'),
+            ),
+           const Center(
+              child: Text('3'),
+            )
+            ],
           ),
-          
       ), 
       );
   }
