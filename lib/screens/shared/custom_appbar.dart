@@ -1,7 +1,8 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
-AppBar Custom_AppBar(double height,Color background){
+AppBar Custom_AppBar(BuildContext context,double height,Color background){
   return AppBar(
   toolbarHeight: height,
   backgroundColor: background,
@@ -27,7 +28,9 @@ AppBar Custom_AppBar(double height,Color background){
           child: IconButton(
             icon: const Icon(Icons.settings,color: Colors.white,size: 19,),
             tooltip: 'configurações',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'configurações');
+            },
              ),
         ),
        ),

@@ -1,5 +1,6 @@
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -56,8 +57,9 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-             textCapitalization: TextCapitalization.characters,
              controller: volumeController,
+             keyboardType: TextInputType.number,
+             inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(2)],
              decoration: const InputDecoration(
               label: Text('Volume'),
               border: OutlineInputBorder(),
@@ -65,7 +67,8 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-             textCapitalization: TextCapitalization.characters,
+              keyboardType: TextInputType.number,
+             inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(4)],
              controller: pubyearController,
              decoration: const InputDecoration(
               label: Text('Ano de publicação'),
