@@ -57,11 +57,36 @@ AppBar Custom_AppBar(BuildContext context,double height,Color background){
         ),
          child: Padding(
            padding:  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 1.0),
-           child: IconButton(
-            onPressed: () {},
-             icon: const Icon(Icons.person, color: Colors.white,size: 19,),
-              tooltip: 'em desenvolvimento',
+           child: PopupMenuButton(
+            icon: const Icon(Icons.add_circle, size: 19, color: Colors.white,),
+            tooltip: 'criar',
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                child: const Row(
+                  children: [
+                    Icon(Icons.library_add),
+                    SizedBox(width: 8),
+                    Text('nova coleção')
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, 'coleção');
+                },
               ),
+            PopupMenuItem(
+                child: const Row(
+                  children: [
+                    Icon(Icons.calendar_month_outlined),
+                    SizedBox(width: 8),
+                    Text('Registrar saida')
+                  ],
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'saida');
+              },
+             ),
+            ],
+           ),
          ),
          ),
       ],

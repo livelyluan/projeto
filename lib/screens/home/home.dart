@@ -1,3 +1,7 @@
+import 'package:book_finder/model/collection.dart';
+import 'package:book_finder/model/register.dart';
+import 'package:book_finder/screens/home/components/book_collection.dart';
+import 'package:book_finder/screens/home/components/book_leave.dart';
 import 'package:book_finder/screens/home/components/new_book.dart';
 import 'package:book_finder/screens/shared/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +11,15 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var collection = Collection(name: 'Coleção ');
+
+  var checkoutBook = CheckoutBook(
+    title: 'parcy jackson', 
+    userName: 'luan', 
+    checkoutDate: '06/07/2024', 
+    returnDate: '12/07/2024',
+    );
 
   var book = Book(
     title: 'harry potter',
@@ -29,19 +42,23 @@ class Home extends StatelessWidget {
           body: TabBarView(
             children:[ Expanded(
               child: ListView.builder(
-             itemCount: 8,
+             itemCount: 2,
              itemBuilder: (context, index) => NewBook(book: book,),
               ),
             ),
-             const Center(
-              child: Text('2'),
-            ),
-           const Center(
-              child: Text('3'),
-            )
-            ],
-          ),
-      ), 
-      );
+             Expanded(child: ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) => BookCollection(collection: collection)
+             )),
+             
+           Expanded(
+            child: ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) => BookReturn(checkoutBook: checkoutBook)),
+         ),
+       ],
+      ),
+    ), 
+   );
   }
 }

@@ -17,18 +17,24 @@ class NewBook extends StatelessWidget {
     margin: const EdgeInsets.symmetric(vertical: 2.0),
     child: Row(
       children: [
-     const Expanded(
+      Expanded(
        child: ListTile(
-          title: Text('title', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-          subtitle: Text('subtitle', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
+          title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+          subtitle: Text(book.subtitle, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
         ),
         ),
         PopupMenuButton(itemBuilder: (context) =>  [
         const  PopupMenuItem(
-            child: Text('Editar')
+            child: ListTile(
+              leading: Icon(Icons.delete, size: 24),
+              title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+            )
             ),
             const  PopupMenuItem(
-            child: Text('Remover')
+            child: ListTile(
+              leading: Icon(Icons.edit,size: 24),
+              title: Text('Editar', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
+            )
             ),
         ]),
         Image.asset(

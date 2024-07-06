@@ -35,10 +35,10 @@ class _ConfigurationsState extends State<Configurations> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
-                        ),
-                      ),
+                     ),
+                   ),
                  ],
-               )
+               ),
               ],
             ),
           ],
