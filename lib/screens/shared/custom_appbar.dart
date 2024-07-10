@@ -58,7 +58,7 @@ AppBar Custom_AppBar(BuildContext context,double height,Color background){
          child: Padding(
            padding:  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 1.0),
            child: PopupMenuButton(
-            icon: const Icon(Icons.add_circle, size: 19, color: Colors.white,),
+            icon: const Icon(Icons.add_circle, size: 18, color: Colors.white,),
             tooltip: 'criar',
             itemBuilder: (context) => [
               PopupMenuItem(
