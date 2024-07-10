@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Book {
   int? id;
   final String title;
@@ -16,4 +18,17 @@ class Book {
     required this.volume,
     required this.publicationYear,
   });
+
+  factory Book.fromMap(Map<String, dynamic> map) {
+    return Book(
+      id: map['id'],
+      title: map['title'],
+      subtitle: map['subtitle'],
+      author: map['author'],
+      publisher: map['publisher'],
+      volume: map['volume'],
+      publicationYear: map['publicationYear']
+    );
+  }
+
 }

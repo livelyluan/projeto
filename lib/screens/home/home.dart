@@ -11,7 +11,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var collection = Collection(name: 'Coleção ');
 
   var checkoutBook = CheckoutBook(

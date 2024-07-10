@@ -33,6 +33,7 @@ class DB {
 
   String get _book => '''
   CREATE TABLE book (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT PRIMARY KEY,
   subtitle TEXT,
   author TEXT,
