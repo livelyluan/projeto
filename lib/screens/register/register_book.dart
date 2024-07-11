@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
              decoration: const InputDecoration(
               label: Text('Ano de publicação'),
               border: OutlineInputBorder(),
-             ),
+                ),
               ),
             ],
           ),

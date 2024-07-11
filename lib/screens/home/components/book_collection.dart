@@ -25,12 +25,18 @@ class BookCollection extends StatelessWidget {
                 title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
                  ),
                 ),
+               const PopupMenuItem(
+                  child: ListTile(
+                    leading: Icon(Icons.edit),
+                    title: Text('Renomear', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
+                    ),
+                 ),
                ],
              ),
             Image.asset(
               'assets/images/collection.png',
               width: 100,
-            )
+            ),
           ],
         ),
       ),
