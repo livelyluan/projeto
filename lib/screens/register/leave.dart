@@ -9,6 +9,7 @@ class LeaveBook extends StatefulWidget {
 }
 final titleController = TextEditingController();
 final userNameController = TextEditingController();
+final clientNameController = TextEditingController();
 final checkoutController = TextEditingController();
 final returnController = TextEditingController();
 
@@ -41,11 +42,20 @@ class _LeaveBookState extends State<LeaveBook> {
                 textCapitalization: TextCapitalization.characters,
                 controller: userNameController,
                 decoration: const InputDecoration(
-               label: Text('username'),
+               label: Text('usuario'),
                border: OutlineInputBorder(),
                 ),
               ),
             const  SizedBox(height: 8,),
+            TextField(
+                textCapitalization: TextCapitalization.characters,
+                controller: clientNameController,
+                decoration: const InputDecoration(
+               label: Text('Nome do cliente'),
+               border: OutlineInputBorder(),
+                ),
+              ),
+              const  SizedBox(height: 8,),
               TextFormField(
                 controller: checkoutController,
                 readOnly: true,

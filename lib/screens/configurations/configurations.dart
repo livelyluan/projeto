@@ -10,6 +10,7 @@ class Configurations extends StatefulWidget {
 
 class _ConfigurationsState extends State<Configurations> {
  var switch_notifications = false;
+ var switch_themeDark;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,29 @@ class _ConfigurationsState extends State<Configurations> {
                  children: [
                     Text(
                         'Notificações',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                     ),
+                   ),
+                 ],
+               ),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Switch(
+                  value: switch_notifications,
+                 onChanged: (isActive) {
+                  setState(() {
+                    switch_themeDark = isActive;
+                  });
+                 }),
+             const  Column(
+                 children: [
+                    Text(
+                        'Tema escuro',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,

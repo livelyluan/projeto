@@ -4,7 +4,7 @@ import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
 import 'package:book_finder/screens/register/register_book.dart';
 import 'package:flutter/material.dart';
-import "package:sqflite/sqflite.dart";
+
 
 void main() {
   runApp(const MainApp());

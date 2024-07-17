@@ -20,7 +20,7 @@ class NewBook extends StatelessWidget {
       Expanded(
        child: ListTile(
           title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-          subtitle: Text(book.subtitle, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
+          subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
         ),
         ),
         PopupMenuButton(itemBuilder: (context) =>  [
