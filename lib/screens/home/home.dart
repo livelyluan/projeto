@@ -1,5 +1,5 @@
 import 'package:book_finder/model/collection.dart';
-import 'package:book_finder/model/register.dart';
+import 'package:book_finder/model/register_leave.dart';
 import 'package:book_finder/screens/home/components/book_collection.dart';
 import 'package:book_finder/screens/home/components/book_leave.dart';
 import 'package:book_finder/screens/home/components/new_book.dart';

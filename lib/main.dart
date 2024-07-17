@@ -3,6 +3,7 @@ import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
 import 'package:book_finder/screens/register/register_book.dart';
+import 'package:book_finder/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,8 +17,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'home',
+      initialRoute: 'BookScreen',
       routes: {
+        'BookScreen':(context) => const SplashScreen(),
         'home': (context) => const Home(),
         'register': (context) => const Register(),
         'configurações': (context) => const Configurations(),

@@ -1,4 +1,4 @@
-import 'package:book_finder/model/register.dart';
+import 'package:book_finder/model/register_leave.dart';
 import 'package:flutter/material.dart';
 
 class BookReturn extends StatelessWidget {

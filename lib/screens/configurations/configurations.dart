@@ -10,7 +10,7 @@ class Configurations extends StatefulWidget {
 
 class _ConfigurationsState extends State<Configurations> {
  var switch_notifications = false;
- var switch_themeDark;
+ var switch_themeDark = false;
 
   @override
   Widget build(BuildContext context) {
