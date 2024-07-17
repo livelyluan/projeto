@@ -1,19 +1,23 @@
 import 'package:book_finder/model/collection.dart';
 import 'package:book_finder/model/register.dart';
-import 'package:book_finder/repository/bookRepository.dart';
 import 'package:book_finder/screens/home/components/book_collection.dart';
 import 'package:book_finder/screens/home/components/book_leave.dart';
 import 'package:book_finder/screens/home/components/new_book.dart';
 import 'package:book_finder/screens/home/components/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/model/book.dart';
-import 'package:sqflite/sqflite.dart';
 class Home extends StatelessWidget {
  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-  List<Book> books = BookRepository().getAllBooks();
+  
+  var book = Book(
+    title: 'harry potter e a pedra filosofal',
+     author: 'j.k rowling',
+      publisher: 'Bloomsbury Publishing Rocco Presença',
+       volume: 1,
+        publicationYear: 1997);
 
 
     var collection = Collection(name: 'Coleção ');
@@ -40,8 +44,8 @@ class Home extends StatelessWidget {
           body: TabBarView(
             children:[ Expanded(
               child: ListView.builder(
-             itemCount: books.length,
-             itemBuilder: (context, index) => NewBook(book: books[index],),
+             itemCount: 2,
+             itemBuilder: (context, index) => NewBook(book: book),
               ),
             ),
              Expanded(child: ListView.builder(
