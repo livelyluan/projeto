@@ -15,11 +15,10 @@ class SplashScreenState extends State<SplashScreen> {
     hideScreen();
   }
 
-  ///hide your splash screen
   Future<void> hideScreen() async {
     Future.delayed(const Duration(milliseconds: 3600), () {
       FlutterSplashScreen.hide();
-      Navigator.pushNamed(context, 'home');
+      Navigator.pushReplacementNamed(context, 'home');
     });
   }
 
@@ -28,14 +27,10 @@ class SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF4B7C82),
       body: Center(
-        child: Row(
-          children: [
-            Image.asset(
-              'assets/images/bookfinder',
-              width: 100,
-              height: 50,
-            ),
-          ],
+        child: Image.asset(
+          'assets/images/bookfinder.png',
+          width: 400,
+          height: 100,
         ),
       ),
     );

@@ -35,7 +35,8 @@ class BookCollection extends StatelessWidget {
              ),
             Image.asset(
               'assets/images/collection.png',
-              width: 100,
+              width: 90,
+              height: 80,
             ),
           ],
         ),

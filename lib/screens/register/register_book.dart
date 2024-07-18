@@ -31,6 +31,7 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 textCapitalization: TextCapitalization.characters,
                 autofocus: true,
+                inputFormatters: [LengthLimitingTextInputFormatter(40)],
                 controller: titleController,
                 decoration: const InputDecoration(
                   label: Text('Título'),
@@ -40,6 +41,7 @@ class _RegisterState extends State<Register> {
               const SizedBox(height: 16),
               TextFormField(
               textCapitalization: TextCapitalization.characters,
+              inputFormatters: [LengthLimitingTextInputFormatter(30)],
               controller: authorController,
               decoration: const InputDecoration(
                 label: Text('Nome do autor'),
