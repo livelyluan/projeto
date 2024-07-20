@@ -42,11 +42,11 @@ class _ConfigurationsState extends State<Configurations> {
                ),
               ],
             ),
-            SizedBox(height: 8),
+         const SizedBox(height: 8),
             Row(
               children: [
                 Switch(
-                  value: switch_notifications,
+                  value: switch_themeDark,
                  onChanged: (isActive) {
                   setState(() {
                     switch_themeDark = isActive;

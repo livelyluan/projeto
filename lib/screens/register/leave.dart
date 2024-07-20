@@ -10,8 +10,8 @@ class LeaveBook extends StatefulWidget {
 final titleController = TextEditingController();
 final userNameController = TextEditingController();
 final clientNameController = TextEditingController();
-final checkoutController = TextEditingController();
-final returnController = TextEditingController();
+final checkoutController = TextEditingController(text: _formatDate(DateTime.now()));
+final returnController = TextEditingController(text: _formatDate(DateTime.now()));
 
 class _LeaveBookState extends State<LeaveBook> {
   @override
@@ -60,11 +60,13 @@ class _LeaveBookState extends State<LeaveBook> {
                 controller: checkoutController,
                 readOnly: true,
                 decoration:  InputDecoration(
-                border: const OutlineInputBorder(),
+
                 label: const Text('data de saida'),
+                border: const OutlineInputBorder(),
                 suffix: IconButton(
                   icon: const Icon(Icons.calendar_month),
-                  onPressed: () {
+                  onPressed: () async {
+                    checkoutController.text = await showDateDialog();
                   },
                 )
                 ),
@@ -73,15 +75,34 @@ class _LeaveBookState extends State<LeaveBook> {
             TextFormField(
           controller: returnController,
           readOnly: true,
-          decoration: const InputDecoration(
-            border:  OutlineInputBorder(),
-            label: Text('Data de retorno')
-          ),
-            )
-            ],
+          decoration:  InputDecoration(
+            border: const OutlineInputBorder(),
+            label: const Text('Data de retorno'),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.calendar_month),
+            onPressed: () async {
+           returnController.text = await showDateDialog();
+            },
+              ),
+             ),
+            ),
+           ],
           ) ,
          ),
       ),
     );
   }
+  Future<String> showDateDialog() async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      initialEntryMode: DatePickerEntryMode.input,
+    );
+    return _formatDate(date!);
+  }
 }
+
+String _formatDate(DateTime date) =>
+    "${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year.toString().padLeft(4,'0')}";

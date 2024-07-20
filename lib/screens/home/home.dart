@@ -16,8 +16,8 @@ class Home extends StatelessWidget {
     title: 'harry potter e a pedra filosofal',
      author: 'j.k rowling',
       publisher: 'Bloomsbury Publishing Rocco Presença',
-       volume: 1,
-        publicationYear: 1997);
+       volume: '1',
+        publicationYear: '1997');
 
 
     var collection = Collection(name: 'Coleção ');

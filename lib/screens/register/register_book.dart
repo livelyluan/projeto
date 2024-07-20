@@ -1,3 +1,5 @@
+import 'package:book_finder/model/book.dart';
+import 'package:book_finder/repository/Book_repository.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,19 +15,26 @@ final authorController = TextEditingController();
 final publisherController = TextEditingController();
 final volumeController = TextEditingController();
 final pubyearController = TextEditingController();
+
+final formKey = GlobalKey<FormState>();
+
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NewAppBar('Cadastrar novo livro',const Color(0xFF4B7C82)),
-      floatingActionButton: FloatingActionButton(onPressed: () {},
+      floatingActionButton: FloatingActionButton(onPressed: () async {
+        if (formKey.currentState!.validate()) {
+          saveBook();
+        }
+      },
       tooltip: 'salvar',
       child: const Icon(Icons.save),
       ),
       body:  Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
-          // TODO Criar a chave do form
+         key: formKey,
           child: Column(
             children: [
               TextFormField(
@@ -82,5 +91,27 @@ class _RegisterState extends State<Register> {
           ),
         ),
       );
+  }
+  void saveBook() async {
+  final  book = Book(
+    title: titleController.text,
+     author: authorController.text,
+     publisher: publisherController.text,
+      volume: volumeController.text,
+       publicationYear: pubyearController.text,
+       );
+       try {
+        final id = await BookRepository.insert(book);
+        var snackBar = null;
+        if (id > 0) {
+          snackBar = SnackBar(content: Text('O livro n°$id foi salvo com sucesso'));
+        } else {
+          snackBar = const SnackBar(content: Text('Erro ao salvar o livro. Por favor, tente novamente mais tarde'));
+        }
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+       }
+       catch (error) {
+        print(error);
+       }
   }
 }

@@ -2,8 +2,8 @@ class Book {
   final String title;
   final String author;
   final String publisher;
-  final int volume;
-  final int publicationYear;
+  final String volume;
+  final String publicationYear;
 
   Book({
     required this.title,
