@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart';
+
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
@@ -40,13 +40,13 @@ AppBar Custom_AppBar(BuildContext context,double height){
           child:  TextField(
         decoration: InputDecoration(
           hintText: 'Pesquisar',
-          hintStyle: TextStyle(fontSize: 20.0),
+          hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
            alignLabelWithHint: true,
           border: InputBorder.none,
           isDense: true,)
         ),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'pesquisar',),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
       const  SizedBox(width: 3,),
         Container(
           width: 35,
