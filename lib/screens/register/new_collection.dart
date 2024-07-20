@@ -13,7 +13,7 @@ class _NewCollectionState extends State<NewCollection> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: NewAppBar('Nova Coleção',const Color(0xFF4B7C82)),
+      appBar: NewAppBar('Nova Coleção',context),
        floatingActionButton: FloatingActionButton(onPressed: () {},
       tooltip: 'salvar',
       child: const Icon(Icons.save),

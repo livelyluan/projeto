@@ -1,5 +1,6 @@
 import 'package:book_finder/model/book.dart';
 import 'package:book_finder/repository/Book_repository.dart';
+import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,10 +23,15 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewAppBar('Cadastrar novo livro',const Color(0xFF4B7C82)),
+      appBar: NewAppBar('Cadastrar novo livro',context),
       floatingActionButton: FloatingActionButton(onPressed: () async {
         if (formKey.currentState!.validate()) {
           saveBook();
+          Navigator.pushAndRemoveUntil( 
+            context,
+            MaterialPageRoute(builder: (context) => const Home()),
+            (Route<dynamic> route) => false,
+            );
         }
       },
       tooltip: 'salvar',
@@ -46,6 +52,11 @@ class _RegisterState extends State<Register> {
                   label: Text('Título'),
                   border: OutlineInputBorder(),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o titulo do livro';}
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -56,6 +67,11 @@ class _RegisterState extends State<Register> {
                 label: Text('Nome do autor'),
                 border: OutlineInputBorder(),
               ),
+              validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o nome do autor do livro';}
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -75,6 +91,11 @@ class _RegisterState extends State<Register> {
               label: Text('Volume'),
               border: OutlineInputBorder(),
              ),
+             validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o volume do livro';}
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -105,6 +126,12 @@ class _RegisterState extends State<Register> {
         var snackBar = null;
         if (id > 0) {
           snackBar = SnackBar(content: Text('O livro n°$id foi salvo com sucesso'));
+
+          titleController.clear();
+          authorController.clear();
+          publisherController.clear();
+          volumeController.clear();
+          pubyearController.clear();
         } else {
           snackBar = const SnackBar(content: Text('Erro ao salvar o livro. Por favor, tente novamente mais tarde'));
         }

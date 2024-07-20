@@ -25,7 +25,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4B7C82),
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Image.asset(
           'assets/images/bookfinder.png',

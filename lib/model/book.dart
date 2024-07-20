@@ -1,16 +1,16 @@
 class Book {
   final String title;
   final String author;
-  final String publisher;
+  String? publisher;
   final String volume;
-  final String publicationYear;
+  String? publicationYear;
 
   Book({
     required this.title,
     required this.author,
-    required this.publisher,
+    this.publisher,
     required this.volume,
-    required this.publicationYear,
+    this.publicationYear,
   });
 
   Map<String, Object?> toMap() => {

@@ -33,7 +33,7 @@ class Home extends StatelessWidget {
     return  DefaultTabController(
       length: 3, 
       child: Scaffold(
-        appBar: Custom_AppBar(context,100.0,const Color(0xFF4B7C82)),
+        appBar: Custom_AppBar(context,100.0,),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, 'register');

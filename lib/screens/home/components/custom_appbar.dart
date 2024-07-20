@@ -2,10 +2,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
-AppBar Custom_AppBar(BuildContext context,double height,Color background){
+AppBar Custom_AppBar(BuildContext context,double height){
   return AppBar(
   toolbarHeight: height,
-  backgroundColor: background,
+  backgroundColor: Theme.of(context).primaryColor,
   title:Container(
     height: 60.0,
     padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -39,7 +39,7 @@ AppBar Custom_AppBar(BuildContext context,double height,Color background){
         (
           child:  TextField(
         decoration: InputDecoration(
-          hintText: 'Pesquisar na Biblioteca',
+          hintText: 'Pesquisar',
           hintStyle: TextStyle(fontSize: 20.0),
            alignLabelWithHint: true,
           border: InputBorder.none,

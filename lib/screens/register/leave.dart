@@ -17,7 +17,7 @@ class _LeaveBookState extends State<LeaveBook> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: NewAppBar('Registrar saida', const Color(0xFF4B7C82)),
+      appBar: NewAppBar('Registrar saida',context),
       floatingActionButton: FloatingActionButton(onPressed: () {},
       tooltip: 'salvar',
       child: const Icon(Icons.save),
