@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
       colorScheme: MaterialTheme.lightScheme(),
      ),
      darkTheme: ThemeData(
-      colorScheme: MaterialTheme.darkScheme(),
+      colorScheme: MaterialTheme.darkHighContrastScheme(),
      ),
     );
   }

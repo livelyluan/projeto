@@ -1,3 +1,6 @@
+import 'package:book_finder/model/register_leave.dart';
+import 'package:book_finder/repository/leave_repository.dart';
+import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -9,23 +12,34 @@ class LeaveBook extends StatefulWidget {
 }
 final titleController = TextEditingController();
 final userNameController = TextEditingController();
-final clientNameController = TextEditingController();
+final studentNameController = TextEditingController();
 final checkoutController = TextEditingController(text: _formatDate(DateTime.now()));
 final returnController = TextEditingController(text: _formatDate(DateTime.now()));
+
+final formKey = GlobalKey<FormState>();
 
 class _LeaveBookState extends State<LeaveBook> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: NewAppBar('Registrar saida',context),
-      floatingActionButton: FloatingActionButton(onPressed: () {},
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        if (formKey.currentState!.validate()) {
+          checkoutRegister();
+          Navigator.pushAndRemoveUntil( 
+            context,
+            MaterialPageRoute(builder: (context) => const Home()),
+            (Route<dynamic> route) => false,
+            );
+       }
+      },
       tooltip: 'salvar',
       child: const Icon(Icons.save),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
          child: Form(
-          // TODO Criar a chave do form
+          key: formKey,
           child: Column(
             children: [
               TextFormField(
@@ -49,9 +63,9 @@ class _LeaveBookState extends State<LeaveBook> {
             const  SizedBox(height: 8,),
             TextField(
                 textCapitalization: TextCapitalization.characters,
-                controller: clientNameController,
+                controller: studentNameController,
                 decoration: const InputDecoration(
-               label: Text('Nome do cliente'),
+               label: Text('Nome do estudante'),
                border: OutlineInputBorder(),
                 ),
               ),
@@ -101,6 +115,34 @@ class _LeaveBookState extends State<LeaveBook> {
       initialEntryMode: DatePickerEntryMode.input,
     );
     return _formatDate(date!);
+  }
+  void checkoutRegister() async {
+  final  checkoutBook = CheckoutBook(
+    title: titleController.text,
+     userName: userNameController.text,
+     studentName: studentNameController.text,
+      checkoutDate: checkoutController.text,
+       returnDate: returnController.text,
+       );
+       try {
+        final id = await CheckoutRepository.insert(checkoutBook);
+        var snackBar = null;
+        if (id > 0) {
+          snackBar = SnackBar(content: Text('O livro n°$id foi salvo com sucesso'));
+
+          titleController.clear();
+          userNameController.clear();
+          studentNameController.clear();
+          checkoutController.clear();
+          returnController.clear();
+        } else {
+          snackBar = const SnackBar(content: Text('Erro ao registrar saida. Por favor, tente novamente mais tarde'));
+        }
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+       }
+       catch (error) {
+        print(error);
+       }
   }
 }
 

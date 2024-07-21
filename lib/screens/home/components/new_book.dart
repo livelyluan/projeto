@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:book_finder/model/book.dart';
 
-
 class NewBook extends StatelessWidget {
   final Book book;
   const NewBook({
@@ -19,8 +18,8 @@ class NewBook extends StatelessWidget {
       children: [
       Expanded(
        child: ListTile(
-          title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.w500,fontStyle: FontStyle.italic, fontSize: 18),),
-          subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15),),
+          title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.w500,fontStyle: FontStyle.italic, fontSize: 18)),
+          subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15)),
         ),
         ),
         PopupMenuButton(itemBuilder: (context) =>  [
@@ -34,7 +33,7 @@ class NewBook extends StatelessWidget {
             child: ListTile(
               leading: Icon(Icons.edit,size: 24),
               title: Text('Editar', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
-            )
+            ),
             ),
         ]),
         Image.asset(

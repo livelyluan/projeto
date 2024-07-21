@@ -4,4 +4,7 @@ class Collection {
   Collection({
     required this.name,
   });
+  Map<String, Object?> toMap() => {
+    'name': name
+  };
 }

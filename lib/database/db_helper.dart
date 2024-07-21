@@ -10,8 +10,13 @@ class DbHelper {
       onCreate: (db, version) async {
         await db.execute(
             'CREATE TABLE books (title CHAR PRIMARY KEY,author CHAR ,publisher CHAR,volume CHAR(2),publicationYear CHAR(4));');
+            await db.execute(
+              'CREATE TABLE leavebook (title CHAR PRIMARY KEY, userName CHAR, clientName CHAR, checkoutDate CHAR, returnDate CHAR,)');
+               await db.execute(
+              'CREATE TABLE collection (collection CHAR PRIMARY KEY)');
       },
       version: 1,
     );
+    
   }
 }

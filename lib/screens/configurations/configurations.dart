@@ -24,6 +24,8 @@ class _ConfigurationsState extends State<Configurations> {
               children: [
                 Switch(
                   value: switch_notifications,
+                  activeThumbImage: const AssetImage('assets/images/v.png'),
+                  inactiveThumbImage: const AssetImage('assets/images/x.png'),
                  onChanged: (isActive) {
                   setState(() {
                     switch_notifications = isActive;
@@ -46,6 +48,8 @@ class _ConfigurationsState extends State<Configurations> {
             Row(
               children: [
                 Switch(
+                  activeThumbImage: const AssetImage('assets/images/v.png'),
+                  inactiveThumbImage: const AssetImage('assets/images/x.png'),
                   value: switch_themeDark,
                  onChanged: (isActive) {
                   setState(() {
