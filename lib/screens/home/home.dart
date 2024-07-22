@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
     var collection = Collection(name: 'Coleção ');
 
   var checkoutBook = CheckoutBook(
-    title: 'parcy jackson', 
+    title: 'percy jackson', 
     userName: 'luan', 
     studentName: 'fulano',
     checkoutDate: '06/07/2024', 

@@ -16,7 +16,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> hideScreen() async {
-    Future.delayed(const Duration(milliseconds: 3600), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       FlutterSplashScreen.hide();
       Navigator.pushReplacementNamed(context, 'home');
     });
@@ -25,7 +25,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: const Color(0xFF006971),
       body: Center(
         child: Image.asset(
           'assets/images/bookfinder.png',

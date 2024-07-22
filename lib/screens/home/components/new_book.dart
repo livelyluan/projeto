@@ -12,35 +12,40 @@ class NewBook extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
   padding: const EdgeInsets.symmetric(vertical: 6.0),
-  child: Card(
-    margin: const EdgeInsets.symmetric(vertical: 2.0),
-    child: Row(
-      children: [
-      Expanded(
-       child: ListTile(
-          title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.w500,fontStyle: FontStyle.italic, fontSize: 18)),
-          subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15)),
-        ),
-        ),
-        PopupMenuButton(itemBuilder: (context) =>  [
-        const  PopupMenuItem(
-            child: ListTile(
-              leading: Icon(Icons.delete, size: 24),
-              title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
-            )
-            ),
-            const  PopupMenuItem(
-            child: ListTile(
-              leading: Icon(Icons.edit,size: 24),
-              title: Text('Editar', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
-            ),
-            ),
-        ]),
-        Image.asset(
-       'assets/images/livros.png',
-       width: 100,
-        ),
-      ],
+  child: GestureDetector(
+    onTap: () {
+      Navigator.pushNamed(context, 'infobook');
+    },
+    child: Card(
+      margin: const EdgeInsets.symmetric(vertical: 2.0),
+      child: Row(
+        children: [
+        Expanded(
+         child: ListTile(
+            title:  Text(book.title, style: const TextStyle(fontWeight: FontWeight.w500,fontStyle: FontStyle.italic, fontSize: 18)),
+            subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15)),
+          ),
+          ),
+          PopupMenuButton(itemBuilder: (context) =>  [
+          const  PopupMenuItem(
+              child: ListTile(
+                leading: Icon(Icons.delete, size: 24),
+                title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+              )
+              ),
+              const  PopupMenuItem(
+              child: ListTile(
+                leading: Icon(Icons.edit,size: 24),
+                title: Text('Editar', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
+              ),
+              ),
+          ]),
+          Image.asset(
+         'assets/images/livros.png',
+         width: 100,
+          ),
+        ],
+      ),
     ),
   ),
     );

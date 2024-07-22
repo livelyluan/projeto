@@ -12,7 +12,7 @@ class Book {
     required this.volume,
     this.publicationYear,
   });
-
+  
   Map<String, Object?> toMap() => {
     'title': title,
     'author': author,
@@ -20,6 +20,5 @@ class Book {
     'volume': volume,
     'publicationYear': publicationYear,
   };
- 
   }
 

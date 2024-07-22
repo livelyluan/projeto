@@ -5,7 +5,7 @@ import 'package:book_finder/screens/shared/tab_bar.dart';
 AppBar Custom_AppBar(BuildContext context,double height){
   return AppBar(
   toolbarHeight: height,
-  backgroundColor: Theme.of(context).primaryColor,
+  backgroundColor: const Color(0xFF006971),
   title:Container(
     height: 60.0,
     padding: const EdgeInsets.symmetric(horizontal: 12.0),
