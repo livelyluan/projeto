@@ -1,9 +1,10 @@
+
 import 'package:book_finder/screens/configurations/configurations.dart';
 import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
 import 'package:book_finder/screens/register/register_book.dart';
-import 'package:book_finder/screens/inicio/splash_screen.dart';
+import 'package:book_finder/screens/start/splash_screen.dart';
 import 'package:book_finder/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class MainApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
-      colorScheme: MaterialTheme.lightScheme(),
+      colorScheme: MaterialTheme.darkScheme(),
      ),
      darkTheme: ThemeData(
       colorScheme: MaterialTheme.darkHighContrastScheme(),
