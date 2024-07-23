@@ -1,5 +1,6 @@
 import 'package:book_finder/model/collection.dart';
 import 'package:book_finder/model/register_leave.dart';
+import 'package:book_finder/repository/book_repository.dart';
 import 'package:book_finder/screens/home/components/book_collection.dart';
 import 'package:book_finder/screens/home/components/book_leave.dart';
 import 'package:book_finder/screens/home/components/new_book.dart';
@@ -7,17 +8,12 @@ import 'package:book_finder/screens/home/components/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/model/book.dart';
 class Home extends StatelessWidget {
- const Home({super.key});
+  Home({super.key});
+
+ final bookRepository = BookRepository();
 
   @override
   Widget build(BuildContext context) {
-  
-  var book = Book(
-    title: 'harry potter e a pedra filosofal',
-     author: 'j.k rowling',
-      publisher: 'Bloomsbury Publishing Rocco Presença',
-       volume: '1',
-        publicationYear: '1997');
         
     var collection = Collection(name: 'Coleção ');
 
@@ -41,11 +37,21 @@ class Home extends StatelessWidget {
           child: const Icon(Icons.add),
           ),
           body: TabBarView(
-            children:[ Expanded(
-              child: ListView.builder(
-             itemCount: 2,
-             itemBuilder: (context, index) => NewBook(book: book),
-              ),
+            children:[
+               FutureBuilder<List<Book>>(
+                future: bookRepository.getBook(),
+                builder: (context, snapshot) { 
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('erro ao carrehar livros'));
+                  } else {
+                    return ListView.builder(
+                      itemCount: snapshot.data?.length ?? 0,
+                      itemBuilder: (context, index) => NewBook(book: snapshot.data![index]),
+                    );
+                  }
+                },
             ),
              Expanded(child: ListView.builder(
               itemCount: 2,

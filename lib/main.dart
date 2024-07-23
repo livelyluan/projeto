@@ -24,12 +24,12 @@ class MainApp extends StatelessWidget {
       routes: {
 
         'BookScreen':(context) => const SplashScreen(),
-        'home': (context) => const Home(),
+        'home': (context) =>  Home(),
         'register': (context) => const Register(),
         'configurações': (context) => const Configurations(),
         'saida': (context) => const LeaveBook(),
         'coleção': (context) => const NewCollection(),
-        'BookDetails': (context) =>  BookDetailsScreen(),
+        'bookDetails': (context) => const BookDetailsScreen(),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(

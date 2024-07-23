@@ -1,32 +1,28 @@
+import 'package:book_finder/model/book.dart';
+import 'package:book_finder/screens/detailsbook/componentes/info_book.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 
-class BookDetailsScreen extends StatelessWidget {
+class BookDetailsScreen extends StatefulWidget {
+
+  const BookDetailsScreen({super.key});
+
+  @override
+  State<BookDetailsScreen> createState() => _BookDetailsScreenState();
+}
+var book = Book(title: 'One piece', author: 'eichiro oda', publisher: 'shounenJump', volume: '1', publicationYear: '1997');
+
+class _BookDetailsScreenState extends State<BookDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewAppBar('detalhes', context),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Text(
-              'Book Title',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text('Author: John Doe'),
-            SizedBox(height: 10),
-            Text('Published: 2022'),
-            SizedBox(height: 20),
-            Text(
-              'Book Description',
-              style: TextStyle(fontSize: 18),
-            ),
-          ],
+      appBar: NewAppBar('informações', context),
+      body: Card(
+      child:  ListView.builder(
+        itemCount: 1,
+        itemBuilder: (context, index) => InfoBook(book: book),
+       )
         ),
-      ),
     );
   }
 }
-

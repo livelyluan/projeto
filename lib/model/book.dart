@@ -1,3 +1,4 @@
+
 class Book {
   final String title;
   final String author;
@@ -20,5 +21,14 @@ class Book {
     'volume': volume,
     'publicationYear': publicationYear,
   };
+   factory Book.fromMap(Map<String, dynamic> mapa) {
+    return Book(
+      title: mapa['title'],
+       author: mapa['author'],
+       publisher: mapa['publisher'],
+        volume: mapa['volume'],
+        publicationYear: mapa['publicationYear'],
+        );
+  }
   }
 

@@ -28,7 +28,7 @@ class _LeaveBookState extends State<LeaveBook> {
           checkoutRegister();
           Navigator.pushAndRemoveUntil( 
             context,
-            MaterialPageRoute(builder: (context) => const Home()),
+            MaterialPageRoute(builder: (context) =>  Home()),
             (Route<dynamic> route) => false,
             );
        }
