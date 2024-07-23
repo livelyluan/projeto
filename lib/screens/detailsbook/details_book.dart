@@ -1,21 +1,13 @@
+import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewAppBar(
-        title: 'Book Details',
-        backgroundColor: Colors.blue,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      appBar: NewAppBar('detalhes', context),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(
@@ -38,22 +30,3 @@ class BookDetailsScreen extends StatelessWidget {
   }
 }
 
-class NewAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-  final Color backgroundColor;
-  final Widget leading;
-
-  NewAppBar({required this.title, required this.backgroundColor, required this.leading});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(title),
-      backgroundColor: backgroundColor,
-      leading: leading,
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-}

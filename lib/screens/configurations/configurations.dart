@@ -33,12 +33,7 @@ class _ConfigurationsState extends State<Configurations> {
                  }),
              const  Column(
                  children: [
-                    Text(
-                        'Notificações',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                     ),
+                    Text( 'Notificações', style: TextStyle(fontWeight: FontWeight.w800,fontStyle: FontStyle.italic, fontSize: 16),
                    ),
                  ],
                ),
@@ -58,11 +53,7 @@ class _ConfigurationsState extends State<Configurations> {
                  }),
              const  Column(
                  children: [
-                    Text(
-                        'Tema escuro',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                    Text( 'Tema escuro',  style: TextStyle( fontWeight: FontWeight.w800,fontSize: 16, fontStyle: FontStyle.italic
                      ),
                    ),
                  ],
