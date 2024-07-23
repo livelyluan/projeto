@@ -15,7 +15,7 @@ final titleController = TextEditingController();
 final authorController = TextEditingController();
 final publisherController = TextEditingController();
 final volumeController = TextEditingController();
-final pubyearController = TextEditingController(text: _formatDate(DateTime.now()));
+final pubyearController = TextEditingController();
 
 final formKey = GlobalKey<FormState>();
 
@@ -61,7 +61,7 @@ class _RegisterState extends State<Register> {
               const SizedBox(height: 16),
               TextFormField(
               textCapitalization: TextCapitalization.characters,
-              inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z.,]')),LengthLimitingTextInputFormatter(30)],
+              inputFormatters: [LengthLimitingTextInputFormatter(30)],
               controller: authorController,
               decoration: const InputDecoration(
                 label: Text('Nome do autor'),
@@ -102,15 +102,9 @@ class _RegisterState extends State<Register> {
               keyboardType: TextInputType.number,
              inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(4)],
              controller: pubyearController,
-             decoration:  InputDecoration(
-              labelText: 'Ano de publicação',
-              border: const OutlineInputBorder(),
-              suffixIcon: IconButton(
-              icon: const Icon(Icons.calendar_month),
-            onPressed: () async {
-           pubyearController.text = await showDateDialog();
-            },
-              ),
+             decoration: const InputDecoration(
+              label: Text('Ano de publicação'),
+              border: OutlineInputBorder(),
                 ),
               ),
             ],
@@ -147,16 +141,5 @@ class _RegisterState extends State<Register> {
         print(error);
        }
   }
-  Future<String> showDateDialog() async {
-    final date = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1500),
-      lastDate: DateTime(2100),
-      initialEntryMode: DatePickerEntryMode.input,
-    );
-    return _formatDate(date!);
-  }
+  
 }
-String _formatDate(DateTime date) =>
-    "${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year.toString().padLeft(4,'0')}";

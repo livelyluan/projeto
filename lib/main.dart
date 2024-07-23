@@ -1,5 +1,6 @@
 
 import 'package:book_finder/screens/configurations/configurations.dart';
+import 'package:book_finder/screens/detailsbook/details_book.dart';
 import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
@@ -21,16 +22,18 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'BookScreen',
       routes: {
+
         'BookScreen':(context) => const SplashScreen(),
         'home': (context) => const Home(),
         'register': (context) => const Register(),
         'configurações': (context) => const Configurations(),
         'saida': (context) => const LeaveBook(),
         'coleção': (context) => const NewCollection(),
+        'BookDetails': (context) =>  BookDetailsScreen(),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
-      colorScheme: MaterialTheme.lightScheme(),
+      colorScheme: MaterialTheme.darkScheme(),
      ),
      darkTheme: ThemeData(
       colorScheme: MaterialTheme.darkHighContrastScheme(),

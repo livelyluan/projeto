@@ -3,7 +3,6 @@ import 'package:book_finder/repository/leave_repository.dart';
 import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class LeaveBook extends StatefulWidget {
   const LeaveBook({super.key});
@@ -45,81 +44,62 @@ class _LeaveBookState extends State<LeaveBook> {
             children: [
               TextFormField(
                 textCapitalization: TextCapitalization.characters,
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))],
                 autofocus: true,
                 controller: titleController,
                 decoration: const InputDecoration(
                   label: Text('Título'),
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, informe o titulo do livro';}
-                  return null;
-                },
               ),
-            const  SizedBox(height:  10),
-              TextFormField(
+            const  SizedBox(height:  8),
+              TextField(
                 textCapitalization: TextCapitalization.characters,
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z].,'))],
                 controller: userNameController,
                 decoration: const InputDecoration(
                label: Text('usuario'),
                border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, informe o nome do usuario do aplicativo';}
-                  return null;
-                },
               ),
-            const  SizedBox(height: 10),
-            TextFormField(
+            const  SizedBox(height: 8,),
+            TextField(
                 textCapitalization: TextCapitalization.characters,
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))],
                 controller: studentNameController,
                 decoration: const InputDecoration(
-               labelText: 'Nome do estudante',
+               label: Text('Nome do estudante'),
                border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, informe o nome do estudante';}
-                  return null;
-                },
               ),
               const  SizedBox(height: 8,),
-              
+              TextFormField(
+                controller: checkoutController,
+                readOnly: true,
+                decoration:  InputDecoration(
+
+                label: const Text('data de saida'),
+                border: const OutlineInputBorder(),
+                suffix: IconButton(
+                  icon: const Icon(Icons.calendar_month),
+                  onPressed: () async {
+                    checkoutController.text = await showDateDialog();
+                  },
+                )
+                ),
+              ),
             const   SizedBox(height: 8,),
             TextFormField(
-          controller: checkoutController,
+          controller: returnController,
           readOnly: true,
           decoration:  InputDecoration(
             border: const OutlineInputBorder(),
-            labelText: 'Data de retirada',
+            label: const Text('Data de retorno'),
             suffixIcon: IconButton(
               icon: const Icon(Icons.calendar_month),
             onPressed: () async {
-           checkoutController.text = await showDateDialog();
+           returnController.text = await showDateDialog();
             },
               ),
              ),
             ),
-          const SizedBox(height: 10),
-          TextFormField(
-            controller: returnController,
-            readOnly: true,
-            decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            labelText: 'Data de devolução',
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.calendar_month),
-              onPressed: () async {
-                returnController.text = await showDateDialog();
-              },
-            ),
-            ),
-          ),
            ],
           ) ,
          ),
@@ -148,11 +128,13 @@ class _LeaveBookState extends State<LeaveBook> {
         final id = await CheckoutRepository.insert(checkoutBook);
         var snackBar = null;
         if (id > 0) {
-          snackBar = const SnackBar(content:  Text('O livro retirado foi salvo com sucesso'));
+          snackBar = SnackBar(content: Text('O livro n°$id foi salvo com sucesso'));
 
           titleController.clear();
           userNameController.clear();
           studentNameController.clear();
+          checkoutController.clear();
+          returnController.clear();
         } else {
           snackBar = const SnackBar(content: Text('Erro ao registrar saida. Por favor, tente novamente mais tarde'));
         }
