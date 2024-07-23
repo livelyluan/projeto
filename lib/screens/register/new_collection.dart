@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
+import 'package:flutter/services.dart';
 
 class NewCollection extends StatefulWidget {
   const NewCollection({super.key});
@@ -22,14 +23,20 @@ class _NewCollectionState extends State<NewCollection> {
         padding: const EdgeInsets.all(16),
         child: Column(
         children: [
-         TextField(
+         TextFormField(
           textCapitalization: TextCapitalization.characters,
+          inputFormatters: [LengthLimitingTextInputFormatter(20)],
           autofocus: true,
           controller: nameController,
           decoration: const InputDecoration(
             label: Text('Nome da coleção'),
             border: OutlineInputBorder(),
           ),
+          validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o nome da coleção';}
+                  return null;
+                },
          )
         ],
         ),
