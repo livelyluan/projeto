@@ -2,9 +2,9 @@
 class Book {
   final String title;
   final String author;
-  String? publisher;
+  final String? publisher;
   final String volume;
-  String? publicationYear;
+  final String? publicationYear;
 
   Book({
     required this.title,

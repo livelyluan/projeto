@@ -16,9 +16,18 @@ class CheckoutBook {
   Map<String, Object?> toMap() => {
     'title': title,
     'userName': userName,
-    'clientName': studentName,
+    'studentName': studentName,
     'checkoutDate': checkoutDate,
     'returnDate': returnDate,
   };
+  factory CheckoutBook.fromMap(Map<String, dynamic> mapa) {
+   return CheckoutBook(
+    title: mapa['title'],
+    userName: mapa['userName'],
+    studentName: mapa['studentName'],
+    checkoutDate: mapa['checkoutDate'],
+    returnDate: mapa['returnDate'],
+   );
+  }
   }
 

@@ -14,7 +14,7 @@ class NewBook extends StatelessWidget {
   padding: const EdgeInsets.symmetric(vertical: 6.0),
   child: GestureDetector(
     onTap: () {
-      Navigator.pushNamed(context, 'bookDetails');
+      Navigator.pushNamed(context, 'bookInfo');
     },
     child: Card(
       margin: const EdgeInsets.symmetric(vertical: 2.0),

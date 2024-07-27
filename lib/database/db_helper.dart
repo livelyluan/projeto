@@ -7,16 +7,15 @@ class DbHelper {
     var dbPath = '$path$dbName';
     return await openDatabase(
       dbPath,
+      version: 1,
       onCreate: (db, version) async {
         await db.execute(
-            'CREATE TABLE books (title CHAR PRIMARY KEY,author CHAR ,publisher CHAR,volume CHAR(2),publicationYear CHAR(4));');
+            'CREATE TABLE books (title TEXT PRIMARY KEY,author TEXT ,publisher CHAR,volume CHAR(2),publicationYear CHAR(4));');
             await db.execute(
-              'CREATE TABLE leavebook (title CHAR PRIMARY KEY, userName CHAR, clientName CHAR, checkoutDate CHAR, returnDate CHAR,)');
+              'CREATE TABLE leavebook (title TEXT PRIMARY KEY, userName TEXT, studentName TEXT, checkoutDate DATETIME, returnDate DATETIME)');
                await db.execute(
-              'CREATE TABLE collection (collection CHAR PRIMARY KEY)');
+              'CREATE TABLE collection (name CHAR PRIMARY KEY)');
       },
-      version: 1,
     );
-    
   }
 }

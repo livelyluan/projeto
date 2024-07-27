@@ -31,11 +31,19 @@ class BookRepository {
           'volume': maps[i]['volume'],
           'publicationYear': maps[i]['publicationYear']
         });
-      },
+      }
     );
   } catch (ex) {
     print(ex);
   }
   return [];
   }
+
+ static Future<void> delete(int id) async {
+  final db = await DbHelper.openConnection();
+  await db.delete('books', where: 'id = ?', whereArgs: [id]);
+ }
+
+
+
 }

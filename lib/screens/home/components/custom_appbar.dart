@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
 AppBar Custom_AppBar(BuildContext context,double height){
+  
   return AppBar(
   toolbarHeight: height,
   backgroundColor: const Color(0xFF006971),
@@ -46,7 +47,9 @@ AppBar Custom_AppBar(BuildContext context,double height){
           isDense: true,)
         ),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
+        IconButton(onPressed: () {
+          
+        }, icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
       const  SizedBox(width: 3,),
         Container(
           width: 35,

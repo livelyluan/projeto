@@ -15,7 +15,7 @@ class BookReturn extends StatelessWidget {
       children: [
       Expanded(
        child: ListTile(
-          title:  Text(checkoutBook.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24,)),
+          title:  Text(checkoutBook.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18,)),
           subtitle: Text(checkoutBook.returnDate, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18)), 
           ),
         ),

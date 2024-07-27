@@ -15,7 +15,7 @@ final titleController = TextEditingController();
 final authorController = TextEditingController();
 final publisherController = TextEditingController();
 final volumeController = TextEditingController();
-final pubyearController = TextEditingController();
+final pubyearController = TextEditingController(text: _formatDate(DateTime.now()));
 
 final formKey = GlobalKey<FormState>();
 
@@ -44,13 +44,17 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: [
               TextFormField(
+                style: const TextStyle(color: Colors.black),
                 textCapitalization: TextCapitalization.characters,
                 autofocus: true,
                 inputFormatters: [LengthLimitingTextInputFormatter(40)],
                 controller: titleController,
                 decoration: const InputDecoration(
-                  label: Text('Título'),
+                  hintText: 'titulo',
+                  hintStyle: TextStyle(color: Colors.black, fontStyle: FontStyle.italic),
                   border: OutlineInputBorder(),
+                  fillColor: Colors.white70,
+              filled: true,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -60,12 +64,16 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                style: const TextStyle(color: Colors.black),
               textCapitalization: TextCapitalization.characters,
               inputFormatters: [LengthLimitingTextInputFormatter(30)],
               controller: authorController,
               decoration: const InputDecoration(
-                label: Text('Nome do autor'),
+                hintText: 'autor',
+                hintStyle: TextStyle(color: Colors.black,fontStyle: FontStyle.italic),
                 border: OutlineInputBorder(),
+                fillColor: Colors.white70,
+              filled: true,
               ),
               validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -75,21 +83,34 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+             style: const TextStyle(color: Colors.black),
              textCapitalization: TextCapitalization.characters,
              controller: publisherController,
              decoration: const InputDecoration(
-              label: Text('Editora'),
+              hintText: 'Editora',
+              hintStyle: TextStyle(color: Colors.black,fontStyle: FontStyle.italic),
               border: OutlineInputBorder(),
+              fillColor: Colors.white70,
+              filled: true,
              ),
+             validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o nome da editora';}
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
+             style: const TextStyle(color: Colors.black),
              controller: volumeController,
              keyboardType: TextInputType.number,
              inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(2)],
              decoration: const InputDecoration(
-              label: Text('Volume'),
+              hintText: 'volume',
+              hintStyle: TextStyle(color: Colors.black,fontStyle: FontStyle.italic),
               border: OutlineInputBorder(),
+              fillColor: Colors.white70,
+              filled: true,
              ),
              validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -99,13 +120,27 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+               style: const TextStyle(color: Colors.black),
               keyboardType: TextInputType.number,
              inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(4)],
              controller: pubyearController,
-             decoration: const InputDecoration(
-              label: Text('Ano de publicação'),
-              border: OutlineInputBorder(),
+             decoration:  InputDecoration(
+              hintText: 'ano de publicação',
+              hintStyle: const TextStyle(color: Colors.black),
+              border: const OutlineInputBorder(),
+              fillColor: Colors.white70,
+              filled: true,
+              suffix: IconButton(
+                 icon: const Icon(Icons.calendar_month_rounded, color: Colors.black),
+                 onPressed: () async {
+                   pubyearController.text = await showDateDialog();
+                 },)
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, informe o ano de publicação';}
+                  return null;
+                },
               ),
             ],
           ),
@@ -113,6 +148,17 @@ class _RegisterState extends State<Register> {
         ),
       );
   }
+  Future<String> showDateDialog() async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1800),
+      lastDate: DateTime(2100),
+      initialEntryMode: DatePickerEntryMode.input,
+    );
+    return _formatDate(date!);
+  }
+
   void saveBook() async {
   final  book = Book(
     title: titleController.text,
@@ -143,3 +189,5 @@ class _RegisterState extends State<Register> {
   }
   
 }
+String _formatDate(DateTime date) =>
+    "${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year.toString().padLeft(4,'0')}";

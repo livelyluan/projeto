@@ -39,27 +39,6 @@ class _ConfigurationsState extends State<Configurations> {
                ),
               ],
             ),
-         const SizedBox(height: 8),
-            Row(
-              children: [
-                Switch(
-                  activeThumbImage: const AssetImage('assets/images/v.png'),
-                  inactiveThumbImage: const AssetImage('assets/images/x.png'),
-                  value: switch_themeDark,
-                 onChanged: (isActive) {
-                  setState(() {
-                    switch_themeDark = isActive;
-                  });
-                 }),
-             const  Column(
-                 children: [
-                    Text( 'Tema escuro',  style: TextStyle( fontWeight: FontWeight.w800,fontSize: 16, fontStyle: FontStyle.italic
-                     ),
-                   ),
-                 ],
-               ),
-              ],
-            ),
           ],
         ),
       ),

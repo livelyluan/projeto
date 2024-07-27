@@ -7,4 +7,9 @@ class Collection {
   Map<String, Object?> toMap() => {
     'name': name
   };
+  factory Collection.fromMap(Map<String, dynamic> mapa) {
+   return Collection(
+    name: mapa['name'],
+   );
+  }
 }

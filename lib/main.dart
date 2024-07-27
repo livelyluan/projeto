@@ -1,6 +1,6 @@
 
 import 'package:book_finder/screens/configurations/configurations.dart';
-import 'package:book_finder/screens/detailsbook/details_book.dart';
+import 'package:book_finder/screens/info/details_book.dart';
 import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
@@ -29,14 +29,14 @@ class MainApp extends StatelessWidget {
         'configurações': (context) => const Configurations(),
         'saida': (context) => const LeaveBook(),
         'coleção': (context) => const NewCollection(),
-        'bookDetails': (context) => const BookDetailsScreen(),
+        'bookInfo': (context) =>  BookInfo(),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
       colorScheme: MaterialTheme.lightScheme(),
      ),
      darkTheme: ThemeData(
-      colorScheme: MaterialTheme.darkHighContrastScheme(),
+      colorScheme: MaterialTheme.darkScheme(),
      ),
     );
   }
