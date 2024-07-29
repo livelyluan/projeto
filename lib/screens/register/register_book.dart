@@ -158,9 +158,10 @@ class _RegisterState extends State<Register> {
     );
     return _formatDate(date!);
   }
-
+int bookidcounter = 0;
   void saveBook() async {
   final  book = Book(
+    id: bookidcounter,
     title: titleController.text,
      author: authorController.text,
      publisher: publisherController.text,

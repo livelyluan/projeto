@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
-      colorScheme: MaterialTheme.lightScheme(),
+      colorScheme: MaterialTheme.darkScheme(),
      ),
      darkTheme: ThemeData(
       colorScheme: MaterialTheme.darkScheme(),

@@ -3,9 +3,12 @@ import 'package:book_finder/model/book.dart';
 
 class NewBook extends StatelessWidget {
   final Book book;
+  final Function(Book) onDelete;
+
   const NewBook({
     super.key,
     required this.book,
+    required this.onDelete,
     });
 
   @override
@@ -26,7 +29,13 @@ class NewBook extends StatelessWidget {
             subtitle: Text(book.author, style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15)),
           ),
           ),
-          PopupMenuButton(itemBuilder: (context) =>  [
+          PopupMenuButton<String>(
+          onSelected: (String value) {
+          if (value == 'Remover') {
+            onDelete(book);
+          }
+          },
+            itemBuilder: (context) =>  [
           const  PopupMenuItem(
               child: ListTile(
                 leading: Icon(Icons.delete, size: 24),

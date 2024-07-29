@@ -13,6 +13,10 @@ class Home extends StatelessWidget {
 
  final bookRepository = BookRepository();
  final checkoutRepository = CheckoutRepository();
+ 
+ void handleDelete(Book book) {
+  BookRepository.deleteBook(book.id);
+ } 
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,9 @@ class Home extends StatelessWidget {
                   } else {
                     return ListView.builder(
                       itemCount: snapshot.data?.length ?? 0,
-                      itemBuilder: (context, index) => NewBook(book: snapshot.data![index]),
+                      itemBuilder: (context, index) => NewBook(book: snapshot.data![index],
+                      onDelete: (book) => handleDelete(book),
+                      ),
                     );
                   }
                 },

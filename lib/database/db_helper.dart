@@ -9,12 +9,12 @@ class DbHelper {
       dbPath,
       version: 1,
       onCreate: (db, version) async {
-        await db.execute(
-            'CREATE TABLE books (title TEXT PRIMARY KEY,author TEXT ,publisher CHAR,volume CHAR(2),publicationYear CHAR(4));');
             await db.execute(
               'CREATE TABLE leavebook (title TEXT PRIMARY KEY, userName TEXT, studentName TEXT, checkoutDate DATETIME, returnDate DATETIME)');
                await db.execute(
               'CREATE TABLE collection (name CHAR PRIMARY KEY)');
+              await db.execute(
+                'CREATE TABLE livros (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL,author TEXT NOT NULL,publisher CHAR NOT NULL,volume CHAR(2) NOT NULL,publicationYear CHAR(4) NOT NULL)');
       },
     );
   }

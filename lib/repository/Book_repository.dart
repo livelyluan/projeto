@@ -5,14 +5,14 @@ import 'package:book_finder/model/book.dart';
 class BookRepository {
   static Future<int> insert(Book book) async {
   final db = await DbHelper.openConnection();
-  return db.insert('books', book.toMap());
+  return db.insert('livros', book.toMap());
   }
 
 //listando
  Future<List<Book>> getBook() async {
   try {
     final db = await DbHelper.openConnection();
-    final List<Map<String, dynamic>> maps = await db.query('books');
+    final List<Map<String, dynamic>> maps = await db.query('livros');
     if (maps.isEmpty) {
       return [];
     }
@@ -39,11 +39,21 @@ class BookRepository {
   return [];
   }
 
- static Future<void> delete(int id) async {
+ static Future<void> deleteBook(int id) async {
   final db = await DbHelper.openConnection();
-  await db.delete('books', where: 'id = ?', whereArgs: [id]);
+  await db.delete('livros', where: 'id = ?', whereArgs: [id]);
  }
 
+ static Future<int> updateBook(Book book) async {
+  final db = await DbHelper.openConnection();
+  return db.update(
+    'livros',
+     book.toMap(),
+     where: 'id = ?',
+     whereArgs: [book.id],
+     );
+ }
+ 
 
 
 }
