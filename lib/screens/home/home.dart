@@ -1,6 +1,7 @@
 import 'package:book_finder/model/collection.dart';
 import 'package:book_finder/model/register_leave.dart';
 import 'package:book_finder/repository/book_repository.dart';
+import 'package:book_finder/repository/collection_repository.dart';
 import 'package:book_finder/repository/leave_repository.dart';
 import 'package:book_finder/screens/home/components/book_collection.dart';
 import 'package:book_finder/screens/home/components/book_leave.dart';
@@ -13,12 +14,11 @@ class Home extends StatelessWidget {
 
  final bookRepository = BookRepository();
  final checkoutRepository = CheckoutRepository();
+ final collectionRepository = CollectionRepository();
  
 
   @override
   Widget build(BuildContext context) {
-        
-    var collection = Collection(name: 'Coleção ');
 
     return  DefaultTabController(
       length: 3, 
@@ -33,6 +33,7 @@ class Home extends StatelessWidget {
           ),
           body: TabBarView(
             children:[
+              //livros
                FutureBuilder<List<Book>>(
                 future: bookRepository.getBook(),
                 builder: (context, snapshot) { 
@@ -49,11 +50,24 @@ class Home extends StatelessWidget {
                   }
                 },
             ),
-             Expanded(child: ListView.builder(
-              itemCount: 2,
-              itemBuilder: (context, index) => BookCollection(collection: collection)
-             )),
-             
+             //coleção
+              FutureBuilder<List<Collection>>(
+                future: collectionRepository.findCollection(),
+                builder: (context, snapshot) { 
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return const Center(child: Text('erro ao carregar livros'));
+                  } else {
+                    return ListView.builder(
+                      itemCount: snapshot.data?.length ?? 0,
+                      itemBuilder: (context, index) => BookCollection(collection: snapshot.data![index],
+                      ),
+                    );
+                  }
+                },
+            ),
+             //retirada
           FutureBuilder<List<CheckoutBook>>(
                 future: checkoutRepository.getLeaves(),
                 builder: (context, snapshot) { 

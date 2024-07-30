@@ -23,7 +23,8 @@ class _LeaveBookState extends State<LeaveBook> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: NewAppBar('Registrar saida',context),
-      floatingActionButton: FloatingActionButton(onPressed: () {
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
         if (formKey.currentState!.validate()) {
           checkoutRegister();
           Navigator.pushAndRemoveUntil( 

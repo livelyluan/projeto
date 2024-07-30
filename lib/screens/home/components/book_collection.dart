@@ -15,7 +15,7 @@ class BookCollection extends StatelessWidget {
           children: [
             Expanded(
               child: ListTile(
-                title: Text(collection.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+                title: Text(collection.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               ),
             ),
             PopupMenuButton(
