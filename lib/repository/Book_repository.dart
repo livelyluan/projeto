@@ -50,7 +50,6 @@ class BookRepository {
     'livros',
      book.toMap(),
      where: 'id = ?',
-     whereArgs: [book.id],
      );
  }
  

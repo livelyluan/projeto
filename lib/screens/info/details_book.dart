@@ -22,4 +22,4 @@ final bookRepository = BookRepository();
     );
   }
 }
-var book = Book(id: 2, title: 'One piece', author: 'eichiro oda', publisher: 'shounenJump', volume: '1', publicationYear: '1997');
+var book = Book(title: 'One piece', author: 'eichiro oda', publisher: 'shounenJump', volume: '1', publicationYear: '1997');

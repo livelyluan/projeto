@@ -3,12 +3,10 @@ import 'package:book_finder/model/book.dart';
 
 class NewBook extends StatelessWidget {
   final Book book;
-  final Function(Book) onDelete;
 
   const NewBook({
     super.key,
     required this.book,
-    required this.onDelete,
     });
 
   @override
@@ -30,11 +28,6 @@ class NewBook extends StatelessWidget {
           ),
           ),
           PopupMenuButton<String>(
-          onSelected: (String value) {
-          if (value == 'Remover') {
-            onDelete(book);
-          }
-          },
             itemBuilder: (context) =>  [
           const  PopupMenuItem(
               child: ListTile(

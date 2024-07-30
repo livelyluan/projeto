@@ -1,6 +1,5 @@
 
 class Book {
-  final int id;
   final String title;
   final String author;
   final String? publisher;
@@ -8,7 +7,6 @@ class Book {
   final String? publicationYear;
 
   Book({
-    required this.id,
     required this.title,
     required this.author,
     this.publisher,
@@ -17,7 +15,6 @@ class Book {
   });
   
   Map<String, Object?> toMap() => {
-    'id': id,
     'title': title,
     'author': author,
     'publisher': publisher,
@@ -26,7 +23,6 @@ class Book {
   };
    factory Book.fromMap(Map<String, dynamic> mapa) {
     return Book(
-      id: mapa['id'],
       title: mapa['title'],
        author: mapa['author'],
        publisher: mapa['publisher'],
