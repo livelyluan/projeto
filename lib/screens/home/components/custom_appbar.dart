@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
 AppBar Custom_AppBar(BuildContext context,double height){
+
+  final SearchController = TextEditingController();
   
   return AppBar(
   toolbarHeight: height,
@@ -36,10 +38,11 @@ AppBar Custom_AppBar(BuildContext context,double height){
         ),
        ),
       const SizedBox(width: 8.0,),
-       const Expanded
+        Expanded
         (
           child:  TextField(
-        decoration: InputDecoration(
+            controller: SearchController,
+        decoration: const InputDecoration(
           hintText: 'Pesquisar',
           hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
            alignLabelWithHint: true,
