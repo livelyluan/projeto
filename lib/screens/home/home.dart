@@ -17,7 +17,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- final bookRepository = BookRepository();
 
  final checkoutRepository = CheckoutRepository();
 
@@ -41,7 +40,7 @@ class _HomeState extends State<Home> {
             children:[
               //livros
                FutureBuilder<List<Book>>(
-                future: bookRepository.getBook(),
+                future: BookRepository.findBook(),
                 builder: (context, snapshot) { 
                   if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.waiting) {
