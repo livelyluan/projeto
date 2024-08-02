@@ -168,6 +168,8 @@ class _LeaveBookState extends State<LeaveBook> {
           titleController.clear();
           userNameController.clear();
           studentNameController.clear();
+          checkoutController.clear();
+          returnController.clear();
         } else {
           snackBar = const SnackBar(content: Text('Erro ao registrar saida. Por favor, tente novamente mais tarde'));
         }
