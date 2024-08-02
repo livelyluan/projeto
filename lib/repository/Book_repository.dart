@@ -13,8 +13,8 @@ class BookRepository {
 //listar
 static Future<List<Book>> findBook() async {
     final db = await DbHelper.openConnection();
-    // select * from tickets
-    final result = await db.query('tickets');
+    // select * from livros
+    final result = await db.query('livros');
     return result.map((item) => Book.fromMap(item)).toList();
 }
 
