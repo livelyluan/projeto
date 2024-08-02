@@ -177,6 +177,7 @@ class _RegisterState extends State<Register> {
           authorController.clear();
           publisherController.clear();
           volumeController.clear();
+          pubyearController.clear();
         } else {
           snackBar = const SnackBar(content: Text('Erro ao salvar o livro. Por favor, tente novamente mais tarde'));
         }

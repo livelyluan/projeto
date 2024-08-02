@@ -15,7 +15,7 @@ class _ConfigurationsState extends State<Configurations> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: NewAppBar('Configurações', context),
+      appBar: NewAppBar('configurações', context),
       body:  Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

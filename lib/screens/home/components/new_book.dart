@@ -1,4 +1,3 @@
-import 'package:book_finder/repository/book_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/model/book.dart';
 
@@ -16,7 +15,7 @@ class NewBook extends StatelessWidget {
   padding: const EdgeInsets.symmetric(vertical: 6.0),
   child: GestureDetector(
     onTap: () {
-      Navigator.pushNamed(context, 'bookInfo');
+      Navigator.pushNamed(context, 'BookInfo');
     },
     child: Card(
       margin: const EdgeInsets.symmetric(vertical: 2.0),
@@ -30,10 +29,11 @@ class NewBook extends StatelessWidget {
           ),
           PopupMenuButton<String>(
             itemBuilder: (context) =>  [
-            PopupMenuItem(
-              child: const ListTile(
+          const  PopupMenuItem(
+              child: ListTile(
                 leading: Icon(Icons.delete, size: 24),
                 title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+<<<<<<< HEAD
               ),
               onTap: () async {
                 final result = await BookRepository.removeBook(book.id!);
@@ -44,6 +44,9 @@ class NewBook extends StatelessWidget {
                   snackBar = const SnackBar(content: Text('Erro ao remover livro. Por favor, tente novamente mais tarde'));
                 } ScaffoldMessenger.of(context).showSnackBar(snackBar);
               } ,
+=======
+              )
+>>>>>>> 107cbabd386c40f54a297d0a06e8d60c8287f9af
               ),
               const  PopupMenuItem(
               child: ListTile(
