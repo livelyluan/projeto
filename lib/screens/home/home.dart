@@ -10,16 +10,8 @@ import 'package:book_finder/screens/home/components/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/model/book.dart';
 class Home extends StatelessWidget {
-  Home({super.key});
+ const Home({super.key});
 
-<<<<<<< HEAD
-=======
- final bookRepository = BookRepository();
- final checkoutRepository = CheckoutRepository();
- final collectionRepository = CollectionRepository();
- 
-
->>>>>>> 107cbabd386c40f54a297d0a06e8d60c8287f9af
   @override
   Widget build(BuildContext context) {
 
@@ -38,7 +30,7 @@ class Home extends StatelessWidget {
             children:[
               //livros
                FutureBuilder<List<Book>>(
-                future: bookRepository.getBook(),
+                future: BookRepository.findBook(),
                 builder: (context, snapshot) { 
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
