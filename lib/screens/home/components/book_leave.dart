@@ -1,4 +1,5 @@
 import 'package:book_finder/model/register_leave.dart';
+import 'package:book_finder/repository/leave_repository.dart';
 import 'package:flutter/material.dart';
 
 class BookReturn extends StatelessWidget {
@@ -20,9 +21,18 @@ class BookReturn extends StatelessWidget {
           ),
         ),
         PopupMenuButton(itemBuilder: (context) => [
-         const PopupMenuItem(child: ListTile(
-          leading: Icon(Icons.delete, size: 24,),
-          title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+          PopupMenuItem(child: ListTile(
+          leading: const Icon(Icons.delete, size: 24,),
+          title: const Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+          onTap: () async {
+                final result = await CheckoutRepository.removeLeave(checkoutBook.id!);
+                SnackBar snackBar;
+                if (result != 0) {
+                  snackBar = const SnackBar(content: Text('A retirada foi removida com sucesso!!!'));
+                } else {
+                  snackBar = const SnackBar(content: Text('Erro ao remover retirada. Por favor, tente novamente mais tarde'));
+                } ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
          )),
        const  PopupMenuItem(child: ListTile(
           leading: Icon(Icons.edit, size: 24,),

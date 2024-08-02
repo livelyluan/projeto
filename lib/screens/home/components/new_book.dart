@@ -36,12 +36,12 @@ class NewBook extends StatelessWidget {
                 title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
               ),
               onTap: () async {
-                final result = await BookRepository.remove(book.id!);
+                final result = await BookRepository.removeBook(book.id!);
                 SnackBar snackBar;
                 if (result != 0) {
-                  snackBar = const SnackBar(content: Text('amem'));
+                  snackBar = const SnackBar(content: Text('O livro foi removido com sucesso!!!'));
                 } else {
-                  snackBar = const SnackBar(content: Text('chora mais'));
+                  snackBar = const SnackBar(content: Text('Erro ao remover livro. Por favor, tente novamente mais tarde'));
                 } ScaffoldMessenger.of(context).showSnackBar(snackBar);
               } ,
               ),

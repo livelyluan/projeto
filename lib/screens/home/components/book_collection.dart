@@ -1,4 +1,5 @@
 import 'package:book_finder/model/collection.dart';
+import 'package:book_finder/repository/collection_repository.dart';
 import 'package:flutter/material.dart';
 
 class BookCollection extends StatelessWidget {
@@ -20,9 +21,18 @@ class BookCollection extends StatelessWidget {
             ),
             PopupMenuButton(
               itemBuilder: (context) => [
-             const PopupMenuItem(child: ListTile(
-                leading: Icon(Icons.delete),
-                title: Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+              PopupMenuItem(child: ListTile(
+                leading: const Icon(Icons.delete),
+                title: const Text('Remover', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
+                onTap: () async {
+                final result = await CollectionRepository.removeCollection(collection.id!);
+                SnackBar snackBar;
+                if (result != 0) {
+                  snackBar = const SnackBar(content: Text('A coleção foi removida com sucesso!!!'));
+                } else {
+                  snackBar = const SnackBar(content: Text('Erro ao remover coleção. Por favor, tente novamente mais tarde'));
+                } ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
                  ),
                 ),
                const PopupMenuItem(

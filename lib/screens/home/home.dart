@@ -18,10 +18,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
- final checkoutRepository = CheckoutRepository();
-
- final collectionRepository = CollectionRepository();
-
   @override
   Widget build(BuildContext context) {
 
@@ -61,7 +57,7 @@ class _HomeState extends State<Home> {
             ),
              //coleção
               FutureBuilder<List<Collection>>(
-                future: collectionRepository.findCollection(),
+                future: CollectionRepository.findCollection(),
                 builder: (context, snapshot) { 
                   if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.waiting) {
@@ -83,7 +79,7 @@ class _HomeState extends State<Home> {
             ),
              //retirada
           FutureBuilder<List<CheckoutBook>>(
-                future: checkoutRepository.getLeaves(),
+                future: CheckoutRepository.findLeaves(),
                 builder: (context, snapshot) { 
                   if (snapshot.connectionState == ConnectionState.none ||
                     snapshot.connectionState == ConnectionState.waiting) {

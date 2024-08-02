@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
@@ -41,6 +40,7 @@ AppBar Custom_AppBar(BuildContext context,double height){
         Expanded
         (
           child:  TextField(
+           style: const TextStyle(color: Colors.black),
             controller: SearchController,
         decoration: const InputDecoration(
           hintText: 'Pesquisar',
@@ -50,9 +50,8 @@ AppBar Custom_AppBar(BuildContext context,double height){
           isDense: true,)
         ),
         ),
-        IconButton(onPressed: () {
-          
-        }, icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
+        IconButton(onPressed: () async {},
+         icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
       const  SizedBox(width: 3,),
         Container(
           width: 35,

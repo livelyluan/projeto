@@ -1,15 +1,19 @@
 class Collection {
+  int? id;
   final String name;
 
   Collection({
+    this.id,
     required this.name,
   });
   Map<String, Object?> toMap() => {
+    'id': id,
     'name': name
   };
-  factory Collection.fromMap(Map<String, dynamic> mapa) {
+  factory Collection.fromMap(Map<String, Object?> mapa) {
    return Collection(
-    name: mapa['name'],
+    id: mapa['id'] as int,
+    name: mapa['name'] as String,
    );
   }
 }
