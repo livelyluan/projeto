@@ -5,21 +5,36 @@ import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 
 class BookInfo extends StatelessWidget {
- BookInfo({super.key});
 
+  final int? bookId;
+
+ BookInfo({super.key, required this.bookId});
+ 
 final bookRepository = BookRepository();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NewAppBar('informações', context),
-      body: Card(
-      child:  ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, index) => InfoBook(book: book),
-       )
-        ),
+      body: FutureBuilder<Book?>(
+        future: BookRepository.findBookId(bookId),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Text('Erro ao carregar o livro');
+          } else {
+            var book = snapshot.data;
+            return Card(
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index) => InfoBook(book: book!),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
-var book = Book(title: 'One piece', author: 'eichiro oda', publisher: 'shounenJump', volume: '1', publicationYear: '1997');
+

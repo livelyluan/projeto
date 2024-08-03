@@ -27,8 +27,6 @@ static Future<List<Book>> findBook() async {
     whereArgs: [id],
   );
  }
-
-
 //atualizar
   static Future<int> adjust(Book book) async {
   final db = await DbHelper.openConnection();
@@ -48,5 +46,20 @@ static Future<List<Book>> findBook() async {
         whereArgs: ['%$title%']);
     return result.map((item) => Book.fromMap(item)).toList();
   }
+
+  // Buscar um livro por ID
+static Future<Book?> findBookId(int? id) async {
+  final db = await DbHelper.openConnection();
+  final result = await db.query(
+    'livros',
+    where: 'id = ?',
+    whereArgs: [id],
+  );
+  if (result.isNotEmpty) {
+    return Book.fromMap(result.first);
+  } else {
+    return null;
+  }
+}
   
 }

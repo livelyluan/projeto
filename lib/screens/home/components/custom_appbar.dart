@@ -30,7 +30,7 @@ AppBar Custom_AppBar(BuildContext context,double height){
             icon: const Icon(Icons.settings,color: Colors.white,size: 19,),
             tooltip: 'configurações',
             onPressed: () {
-              Navigator.pushNamed(context, 'cofigurações');
+              Navigator.pushNamed(context, 'configurações');
             },
              ),
         ),

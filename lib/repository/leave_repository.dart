@@ -26,4 +26,18 @@ class CheckoutRepository {
       whereArgs: [id]
       );
   }
+
+  static Future<CheckoutBook?> findCheckoutId(int? id) async {
+  final db = await DbHelper.openConnection();
+  final result = await db.query(
+    'leavebook',
+    where: 'id = ?',
+    whereArgs: [id],
+  );
+  if (result.isNotEmpty) {
+    return CheckoutBook.fromMap(result.first);
+  } else {
+    return null;
+  }
+}
 }

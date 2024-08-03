@@ -1,7 +1,9 @@
 
 import 'package:book_finder/screens/configurations/configurations.dart';
+import 'package:book_finder/screens/info/componentes/info_book.dart';
 import 'package:book_finder/screens/info/details_book.dart';
 import 'package:book_finder/screens/home/home.dart';
+import 'package:book_finder/screens/info/details_leave.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
 import 'package:book_finder/screens/register/register_book.dart';
@@ -29,7 +31,8 @@ class MainApp extends StatelessWidget {
         'configurações': (context) => const Configurations(),
         'saida': (context) => const LeaveBook(),
         'coleção': (context) => const NewCollection(),
-        'bookInfo': (context) =>  BookInfo(),
+        'bookInfo': (context) =>  BookInfo(bookId: ModalRoute.of(context)?.settings.arguments as int?),
+        'leaveInfo': (context) => LeaveInfo(checkoutId: ModalRoute.of(context)?.settings.arguments as int?),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(
