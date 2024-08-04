@@ -27,9 +27,12 @@ final checkoutRepository = CheckoutRepository();
             return Text('Erro ao carregar a retirada');
           } else {
             var checkout = snapshot.data;
-            return ListView.builder(
-              itemCount: 1,
-              itemBuilder: (context, index) => InfoCheckout(checkout: checkout!),
+            return Card(
+              color: Colors.grey[600],
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index) => InfoCheckout(checkout: checkout!),
+              ),
             );
           }
         },

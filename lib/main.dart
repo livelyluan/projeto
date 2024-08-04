@@ -1,15 +1,18 @@
 
+import 'package:book_finder/model/book.dart';
 import 'package:book_finder/screens/configurations/configurations.dart';
-import 'package:book_finder/screens/info/componentes/info_book.dart';
+import 'package:book_finder/screens/editar/book_edit.dart';
 import 'package:book_finder/screens/info/details_book.dart';
 import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/info/details_leave.dart';
 import 'package:book_finder/screens/register/leave.dart';
 import 'package:book_finder/screens/register/new_collection.dart';
 import 'package:book_finder/screens/register/register_book.dart';
+import 'package:book_finder/screens/search_result/search_result.dart';
 import 'package:book_finder/screens/start/splash_screen.dart';
 import 'package:book_finder/theme.dart';
 import 'package:flutter/material.dart';
+
 
 
 void main() {
@@ -33,6 +36,7 @@ class MainApp extends StatelessWidget {
         'coleção': (context) => const NewCollection(),
         'bookInfo': (context) =>  BookInfo(bookId: ModalRoute.of(context)?.settings.arguments as int?),
         'leaveInfo': (context) => LeaveInfo(checkoutId: ModalRoute.of(context)?.settings.arguments as int?),
+        'searchResult': (context) => SearchResult(searchResult: ModalRoute.of(context)?.settings.arguments as List<Book>),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(

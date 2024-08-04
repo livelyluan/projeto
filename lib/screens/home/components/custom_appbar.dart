@@ -1,3 +1,5 @@
+import 'package:book_finder/repository/Book_repository.dart';
+import 'package:book_finder/screens/search_result/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:book_finder/screens/shared/tab_bar.dart';
 
@@ -48,7 +50,14 @@ AppBar Custom_AppBar(BuildContext context,double height){
           isDense: true,)
         ),
         ),
-        IconButton(onPressed: () async {},
+        IconButton(onPressed: () async {
+          final results = await BookRepository.searchBooks(SearchController.text);
+          Navigator.push(context, 
+          MaterialPageRoute(
+            builder: (context) => SearchResult(searchResult: results)
+             )
+          );
+        },
          icon: const Icon(Icons.search), tooltip: 'pesquisar', color: Colors.black),
       const  SizedBox(width: 3,),
         Container(
@@ -103,4 +112,5 @@ AppBar Custom_AppBar(BuildContext context,double height){
       ],
     ),
   );
+  
 }

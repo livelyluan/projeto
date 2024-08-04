@@ -51,11 +51,14 @@ class NewBook extends StatelessWidget {
                   } ScaffoldMessenger.of(context).showSnackBar(snackBar);
                  } ,
                 ),
-                const  PopupMenuItem(
-                child: ListTile(
+                  PopupMenuItem(
+                child: const ListTile(
                   leading: Icon(Icons.edit,size: 24),
                   title: Text('Editar', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15)),
                 ),
+                onTap: () {
+                  Navigator.pushNamed(context, 'bookEdit', arguments: book.id);
+                },
                 ),
             ]),
             Image.asset(

@@ -26,6 +26,7 @@ final bookRepository = BookRepository();
           } else {
             var book = snapshot.data;
             return Card(
+             color: Colors.grey[600],
               child: ListView.builder(
                 itemCount: 1,
                 itemBuilder: (context, index) => InfoBook(book: book!),
