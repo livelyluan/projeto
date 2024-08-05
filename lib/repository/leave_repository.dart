@@ -27,6 +27,7 @@ class CheckoutRepository {
       );
   }
 
+//buscar por ID
   static Future<CheckoutBook?> findCheckoutId(int? id) async {
   final db = await DbHelper.openConnection();
   final result = await db.query(

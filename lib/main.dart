@@ -1,5 +1,6 @@
 
 import 'package:book_finder/model/book.dart';
+import 'package:book_finder/screens/cole%C3%A7%C3%A3o/cole%C3%A7%C3%A3o.dart';
 import 'package:book_finder/screens/configurations/configurations.dart';
 import 'package:book_finder/screens/editar/book_edit.dart';
 import 'package:book_finder/screens/info/details_book.dart';
@@ -29,7 +30,7 @@ class MainApp extends StatelessWidget {
       routes: {
 
         'BookScreen':(context) => const SplashScreen(),
-        'home': (context) =>  Home(),
+        'home': (context) => const Home(),
         'register': (context) => const Register(),
         'configurações': (context) => const Configurations(),
         'saida': (context) => const LeaveBook(),
@@ -37,6 +38,8 @@ class MainApp extends StatelessWidget {
         'bookInfo': (context) =>  BookInfo(bookId: ModalRoute.of(context)?.settings.arguments as int?),
         'leaveInfo': (context) => LeaveInfo(checkoutId: ModalRoute.of(context)?.settings.arguments as int?),
         'searchResult': (context) => SearchResult(searchResult: ModalRoute.of(context)?.settings.arguments as List<Book>),
+        'CollectionScreen': (context) => CollectionScreen(collection: ModalRoute.of(context)?.settings.arguments as int? ),
+        'bookEdit': (context) => BookEdit(bookId: ModalRoute.of(context)?.settings.arguments as int? ),
       },
       debugShowCheckedModeBanner: false,
      theme: ThemeData(

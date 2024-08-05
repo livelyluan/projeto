@@ -10,8 +10,13 @@ class SearchResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: NewAppBar('Resultado', context),
+  
+   if (searchResult.isEmpty) {
+    return Scaffold(appBar: NewAppBar('Resultados', context),
+    body: Center(child: Text('Nenhum livro encontrado no momento'),), 
+    );
+   } else {return  Scaffold(
+      appBar: NewAppBar('Resultados', context),
       body: ListView.builder(
         itemCount: searchResult.length,
         itemBuilder: (context, index) {
@@ -19,6 +24,6 @@ class SearchResult extends StatelessWidget {
         }
       
        ),
-    );
+    );}
   }
 }

@@ -8,9 +8,8 @@ class BookInfo extends StatelessWidget {
 
   final int? bookId;
 
- BookInfo({super.key, required this.bookId});
+ const BookInfo({super.key, required this.bookId});
  
-final bookRepository = BookRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,9 @@ final bookRepository = BookRepository();
         future: BookRepository.findBookId(bookId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Text('Erro ao carregar o livro');
+            return const Text('Erro ao carregar o livro');
           } else {
             var book = snapshot.data;
             return Card(

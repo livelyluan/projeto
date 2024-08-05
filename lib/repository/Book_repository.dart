@@ -28,7 +28,7 @@ static Future<List<Book>> findBook() async {
   );
  }
 //atualizar (em desenvolvimento)
-  static Future<int> adjust(int id, Book book) async {
+  static Future<int> adjust(int? id, Book book) async {
   final db = await DbHelper.openConnection();
   return db.update(
     'livros',
