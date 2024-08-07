@@ -14,7 +14,7 @@ class DbHelper {
                await db.execute(
               'CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR NOT NULL)');
               await db.execute(
-                'CREATE TABLE livros (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL,author TEXT NOT NULL,publisher CHAR NOT NULL,volume CHAR(2) NOT NULL,publicationYear CHAR(4) NOT NULL)');
+                'CREATE TABLE livros (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL,author TEXT NOT NULL,publisher CHAR NOT NULL,volume CHAR(2) NOT NULL,publicationYear CHAR(4))');
       },
     );
   }

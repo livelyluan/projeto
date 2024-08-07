@@ -27,11 +27,11 @@ class Book {
    factory Book.fromMap(Map<String, Object?> mapa) {
     return Book(
       id: mapa['id'] as int?,
-      title: mapa['title'] as String,
-       author: mapa['author'] as String,
-       publisher: mapa['publisher'] as String,
-        volume: mapa['volume'] as String,
-        publicationYear: mapa['publicationYear'] as String,
+      title: mapa['title'] as String ,
+       author: mapa['author'] as String ,
+       publisher: mapa['publisher'] as String ,
+        volume: mapa['volume'] as String ,
+        publicationYear: mapa['publicationYear'] as String ,
         );
   }
   }

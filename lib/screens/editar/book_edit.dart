@@ -1,5 +1,6 @@
 import 'package:book_finder/model/book.dart';
 import 'package:book_finder/repository/Book_repository.dart';
+import 'package:book_finder/screens/home/home.dart';
 import 'package:book_finder/screens/shared/new_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,12 @@ final int? bookId;
 
  BookEdit({super.key, required this.bookId});
 
-TextEditingController titleController = TextEditingController();
-TextEditingController authorController = TextEditingController();
-TextEditingController volumeController = TextEditingController();
+final titleController = TextEditingController();
+final authorController = TextEditingController();
+final publisherController = TextEditingController();
+final volumeController = TextEditingController();
+final pubyearController = TextEditingController();
+
 
 final formKey = GlobalKey<FormState>();
 
@@ -20,7 +24,16 @@ final formKey = GlobalKey<FormState>();
     return  Scaffold(
       appBar: NewAppBar('editar', context),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          if(formKey.currentState!.validate()) {
+          saveChanges(context);
+          Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => Home()), 
+        (Route<dynamic> route) => false,
+      );
+          }
+        },
         child: const Icon(Icons.save),
         ),
         body: FutureBuilder<Book?>(
@@ -32,14 +45,21 @@ final formKey = GlobalKey<FormState>();
                 } else if (snapshot.hasError) {
                   return Center(child: Text('erro ao carregar Livro'),);
                 } else {
-                 var book = snapshot.data;
+
+                  titleController.text = snapshot.data!.title;
+
+                  authorController.text = snapshot.data!.author;
+
+                  volumeController.text = snapshot.data!.volume;
+
+                  
                  return Form(
                   key: formKey,
                   child: ListView(
                   padding: EdgeInsets.all(16),
                   children: [
                     TextFormField(
-                    controller: TextEditingController(text: book?.title),
+                    controller: titleController,
                     decoration: InputDecoration(labelText: 'Título'),
                     validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -50,7 +70,7 @@ final formKey = GlobalKey<FormState>();
                     ),
                     SizedBox(height: 4),
                     TextFormField(
-                    controller: TextEditingController(text: book?.author),
+                    controller: authorController,
                     decoration: InputDecoration(labelText: 'author'),
                     validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -61,7 +81,18 @@ final formKey = GlobalKey<FormState>();
                     ),
                   SizedBox(height: 4),
                     TextFormField(
-                    controller: TextEditingController(text: book?.title),
+                    controller: publisherController,
+                    decoration: InputDecoration(labelText: 'editora'),
+                    validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o nome da editora.';
+                  }
+                  return null;
+                },
+                    ),
+
+                    TextFormField(
+                    controller: volumeController,
                     decoration: InputDecoration(labelText: 'volume'),
                     validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -70,38 +101,44 @@ final formKey = GlobalKey<FormState>();
                   return null;
                 },
                     ),
+                    SizedBox(height: 4,),
+                    TextFormField(
+                    controller: pubyearController,
+                    decoration: InputDecoration(labelText: 'Ano de publicação'),
+                    validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o ano de publicação do livro.';
+                  }
+                  return null;
+                },
+                    ),
                   ],
         
                  )
-                 );
-                }
+              );
+            }
           },
-          
-                 )
+       )
      );
   }
+  void saveChanges(BuildContext context) {
+  Book updatedBook = Book(
+    id: bookId,
+     title: titleController.text,
+      author: authorController.text,
+      publisher: publisherController.text,
+       volume: volumeController.text,
+       publicationYear: publisherController.text,
+       );
 
-  void saveBook() async {
-  final book = Book(
-    id: bookId, 
-    title: titleController.text, 
-    author: authorController.text,
-    volume: volumeController.text,
-  );
-  try {
-    final id = await BookRepository.adjust(book.id, book); 
-    var snackBar = null;
-    if (id > 0) {
-      snackBar = SnackBar(content: Text('O livro $id foi salvo com sucesso'));
-      titleController.clear();
-    } else {
-      snackBar = const SnackBar(content: Text('Erro ao salvar o livro. Por favor, tente novamente mais tarde'));
-    }
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  } catch (error) {
-    print(error);
-  }
+  BookRepository.updateBook( updatedBook).then((_) {
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Livro atualizado com sucesso')));
+  }).catchError((error) {
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Erro ao atualizar o livro: $error')));
+  });
 }
- 
+
 }
 

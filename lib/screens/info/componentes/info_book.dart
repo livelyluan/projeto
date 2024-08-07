@@ -50,11 +50,11 @@ class InfoBook extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              const Icon(Icons.business, size: 34, color: Colors.black),
+              const Icon(Icons.business, size: 24, color: Colors.black),
               const  SizedBox(width: 12),
                 Text(
                   'editora: ${book.publisher}',
-                  style: const TextStyle(fontSize: 24, color: Colors.black),
+                  style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ],
             ),
@@ -62,11 +62,11 @@ class InfoBook extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              const  Icon(Icons.collections_bookmark, size: 24, color: Colors.black),
+              const  Icon(Icons.collections_bookmark, size: 20, color: Colors.black),
                const SizedBox(width: 12),
                 Text(
                   'Volume: ${book.volume}',
-                  style: const TextStyle(fontSize: 24, color: Colors.black),
+                  style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ],
             ),
@@ -74,11 +74,11 @@ class InfoBook extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-               const Icon(Icons.date_range, size: 24, color: Colors.black),
+               const Icon(Icons.date_range, size: 20, color: Colors.black),
                const SizedBox(width: 12),
                 Text(
                   'Ano de Lançamento ${book.publicationYear}',
-                  style: const TextStyle(fontSize: 24, color: Colors.black),
+                  style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ],
             ),

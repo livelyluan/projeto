@@ -12,10 +12,15 @@ class BookRepository {
 
 //listar
 static Future<List<Book>> findBook() async {
+  try {
     final db = await DbHelper.openConnection();
     // select * from livros
     final result = await db.query('livros');
     return result.map((item) => Book.fromMap(item)).toList();
+    } catch (e) {
+    print('Error finding books: $e');
+    rethrow;
+    }
 }
 
 //remover
@@ -27,13 +32,14 @@ static Future<List<Book>> findBook() async {
     whereArgs: [id],
   );
  }
-//atualizar (em desenvolvimento)
-  static Future<int> adjust(int? id, Book book) async {
+//atualizar 
+  static Future<int> updateBook(Book book) async {
   final db = await DbHelper.openConnection();
   return db.update(
     'livros',
      book.toMap(),
      where: 'id = ?',
+     whereArgs: [book.id]
      );
  }
 
